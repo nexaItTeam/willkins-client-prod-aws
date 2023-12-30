@@ -1,0 +1,26 @@
+.mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  ::ng-deep .mat-step-header  .mat-step-icon-state-edit {
+    background-color: darkgreen !important; 
+ } 
+ ::ng-deep .mat-step-header[aria-selected="true"]  {
+  background-color: #00A9CE !important;;
+  
+  border-radius: 50px;
+  font-weight: 10px;
+
+  & div.mat-step-label.mat-step-label-active.mat-step-label-selected {
+      color: blue !important;
+  }
+}
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
+}

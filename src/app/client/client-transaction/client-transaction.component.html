@@ -1,0 +1,87 @@
+
+<div class="col-lg-6">
+    <button class="btn btn-primary" kendoButton (click)="navigate()">
+        <i class="fa-solid fa-arrow-left"></i> Go Back
+      </button>
+    
+  </div>
+<div class="main-body">
+    <app-loader></app-loader>
+   
+    <h4 style="color: white;">Transaction Details</h4>
+    <div class="bg-white">
+        <kendo-grid [data]="transactionData"  [pageSize]="10" [pageable]="true"
+            [resizable]="true"  >
+            <ng-template kendoGridToolbarTemplate>
+                
+                <kendo-grid-spacer></kendo-grid-spacer>
+                <button class="btn btn-info" kendoGridPDFCommand>Export to PDF</button>
+                <button class="btn btn-dark" kendoGridExcelCommand type="button">Export to Excel</button>
+            </ng-template>
+            <kendo-grid-column field="createdAt" title=" Date"> 
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    {{dataItem.createdAt | date :'dd/MM/yyyy' }}
+                </ng-template>
+            </kendo-grid-column>
+            <!-- <kendo-grid-column field="createdAt" title=" Date"> 
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    {{dataItem.createdAt | date :'dd/MM/yyyy' }}
+                </ng-template>
+            </kendo-grid-column> -->
+            <kendo-grid-column field="order_id" title="Order Number"
+            [class]="{ 'text-center': true }" [resizable]="true">
+            <ng-template kendoGridGroupHeaderTemplate let-group="group">
+                <span style="text-decoration: underline;">
+                  {{ group.value }}
+                </span>
+              </ng-template>
+        </kendo-grid-column>
+            <kendo-grid-column field="property_name" title="Particulars"
+            [class]="{ 'text-center': true }" [resizable]="true">
+            <ng-template kendoGridGroupHeaderTemplate let-group="group">
+                <span style="text-decoration: underline;">
+                  {{ group.value }}
+                </span>
+              </ng-template>
+        </kendo-grid-column>
+          <!--   <kendo-grid-column-group title="Units" [headerStyle]="{'justify-content': 'center'}">
+            <kendo-grid-column field="units_acquired" title="Acquired">
+
+            </kendo-grid-column>
+            <kendo-grid-column field="units_transferred" title="Transferred"> 
+               
+            </kendo-grid-column>            
+            <kendo-grid-column field="units_balance" title="Balance" [class]="{ 'text-center': true }"
+            [resizable]="false">
+           </kendo-grid-column>
+        </kendo-grid-column-group> -->
+        
+        <kendo-grid-column field="investing_amount" [class]="{ 'text-center': true }" title="Debit"
+        >
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+           {{ rowIndex == transactionData.length - 1 ? (dataItem.investing_amount | currency : 'USD' : 'symbol' : '1.0-0' ) : ''}} 
+       </ng-template>
+   </kendo-grid-column>
+            <kendo-grid-column field="amount_paid" title="Credit"
+            [class]="{ 'text-center': true }"  >
+                 <ng-template  kendoGridCellTemplate let-dataItem>
+                   <span style="justify-content: center;">{{dataItem.amount_paid | currency : 'USD' : 'symbol' : '1.0-0' }}</span> 
+                </ng-template>
+            </kendo-grid-column>
+           
+            <kendo-grid-column field="amount_unpaid" title="Balance"
+                [class]="{ 'text-center': true }" [resizable]="true">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                     {{dataItem.amount_unpaid > 0 ? (dataItem.amount_unpaid | currency : 'USD' : 'symbol' : '1.0-0') + ' Dr' : (dataItem.amount_unpaid == null  ? '': dataItem.amount_unpaid == 0 ?  ' $0' :  (   ( -1 * dataItem.amount_unpaid) | currency : 'USD' : 'symbol' : '1.0-0') + ' Cr'  ) }} 
+               
+                </ng-template>
+            </kendo-grid-column>
+           
+           
+           
+           
+            <kendo-grid-pdf fileName="activeClient.pdf" [repeatHeaders]="true" [allPages]="true"></kendo-grid-pdf>
+            <kendo-grid-excel fileName="activeClient.xlsx"></kendo-grid-excel>
+        </kendo-grid>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+app-client-layout {
+    padding: 0;
+    height: 100%;
+  }
+  
+  app-client-layout {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  kendo-drawer-container {
+    flex: 1 1 auto;
+    overflow-y: auto;
+  }
+  
+  .k-icon {
+    font-size: 20px;
+  }
+  
+  .custom-toolbar {
+    width: calc(100% - 240px);
+      line-height: 10px;
+      /* border-bottom: inset; */
+      border-bottom-width: 1px;
+      padding: 15px 15px;
+      color: #fff;
+      color: #fff;
+      position: fixed;
+      top: 0px;
+      z-index: 9;
+      background: #000;
+      border-bottom: 1px solid #ffffff38;
+  }
+  .k-drawer-mini .custom-toolbar {
+    width: calc(100% - 48px);
+  }
+  .mail-box {
+    margin-left: 12.8px;
+    font-weight: bold;
+    font-size: 17px;
+  }

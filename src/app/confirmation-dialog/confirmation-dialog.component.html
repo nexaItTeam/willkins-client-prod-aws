@@ -1,0 +1,25 @@
+<div class="m-0">
+    <div class="border-bottom-1 mb-1">
+        <mat-card-content class="add-edit-dialog">
+            <mat-card-title class="report-header">
+                <div class="d-flex justify-content-between align-items-baseline">
+                    <h4 class="add-edit-heading"><strong>{{data.title}}</strong></h4>
+                    <span fxFlex></span>
+                    <span style="cursor: pointer; font-weight: bold;" (click)="onCancel()"><em
+                            class="fa-solid fa-xmark"></em></span>
+                </div>
+            </mat-card-title>
+        </mat-card-content>
+    </div>
+    <div class="mat-content-space">
+        <div class="row justify-content-center pt-4">
+            <ng-container>
+                <p>{{data.subtitle}}</p>
+                <div class="btn-list pt-4 text-center">
+                    <button class="badge badge-success" type="text" (click)="onSubmit()">Yes</button>
+                    <button class="badge badge-danger" type="text" (click)="onCancel()">No</button>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

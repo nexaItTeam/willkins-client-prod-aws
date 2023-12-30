@@ -1,0 +1,35 @@
+  
+  .example-form-field{
+    margin-right: 10px;
+  }
+  .mat-mdc-card-content{
+    padding: 15px 15px;
+  }
+  .my-container-wrap {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .section-profile-cover{
+    position: relative;
+  }
+  .section-profile-cover img {
+    height: 387px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    object-fit: cover;
+}
+.mat-mdc-card {
+  position: relative;
+  box-shadow: none;
+}
+section.section.property-slider-wrap {
+  position: relative;
+  top: 44px;
+}
+.btn.style3 {
+  background-color: #aaded9 !important;
+  color: #000!important;
+}

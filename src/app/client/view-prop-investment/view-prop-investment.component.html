@@ -1,0 +1,60 @@
+<div style="height: 100px;"></div>
+<app-loader></app-loader>
+<div class="row">
+    <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200" *ngFor="let item of property">
+        <ng-container *ngFor="let object of dataSource">
+        <div *ngIf = "object.value == item.id" class="property-card style3 h_card">
+        <mat-card  >
+            <mat-card-header style="justify-content: center;">
+             <h4  title="{{item.property_name}}"> <mat-card-title style="justify-content: center !important;">{{item.property_name}}</mat-card-title></h4>
+             
+            </mat-card-header> 
+               <!--  <div class="property-img border-radius-0">
+                    <img src="../../../assets/images/property/1.jpg" alt="Image">
+                   
+                </div> -->
+               
+            <ng-container *ngFor="let object of propertyImage">
+              <ng-template [ngIf]="object.prop_id  == item.id">
+              <div class=" property-card style3 h_img">
+            <img (click)="onpropertyClick(item)" mat-card-image title="Click to view more images" src='https://wellkinsstorageprod.blob.core.windows.net/{{object.property_img}}' />
+           
+              </div>
+          </ng-template>
+        </ng-container>
+            <mat-card-content>
+                <ul class="list-project-detail">
+                   
+                    
+                    <!-- <li>Facility: <span>{{ item.facility }}</span></li> -->
+                    <ng-container *ngFor="let object of dataSource">
+                        
+                        <ng-template [ngIf]="object.value  === item.id" >
+                            <li>Total Investment: <span>{{ object.aggregates.investing_amount.sum
+                                | currency : 'USD' : 'symbol' : '1.0-0' }}</span></li>
+                            <li>Total Applications: <span>{{ object.items.length
+                            }}</span></li>
+                        </ng-template>
+                        
+                        </ng-container>
+                      
+                </ul>
+            </mat-card-content>
+            <mat-card-footer>
+              
+              <button class="btn style3"
+              
+              mat-raised-button
+                matTooltip="View Investment Details"
+                aria-label="Example mini fab with a heart icon"
+                (click)="onpropertyClick(item)"
+                
+              >
+              View Details
+              </button>
+            </mat-card-footer>
+          </mat-card>
+    </div>
+</ng-container>
+</div>
+</div>

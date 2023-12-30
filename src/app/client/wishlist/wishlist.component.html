@@ -1,0 +1,72 @@
+
+<app-loader></app-loader>
+
+
+<div style="height:150px"></div>
+
+<div *ngIf="property?.length == 0" class="container">
+    <div class="box-area">
+        <div class="row justify-content-center align-content-center">
+            <div class="col-md-6">
+                <div class="inner-area-box">
+                    <p style="color:white; text-align: center;">You Don't Have any wishlist to show.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<section *ngIf="property?.length != 0"class="section property-slider-wrap pt-100 pb-75 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200" *ngFor="let item of property">
+          <div class="property-card style3 h_card">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <h4 class="mat-custom-title" title="{{item.property_name}}">
+                  <mat-card-title >{{item.prop_data.property_name}}</mat-card-title></h4>
+                <div
+                  [ngClass]="item.prop_data.status=='Trending' ? 'ribbon  ribbon--red': item.prop_data.status =='Closed' ? 'ribbon  ribbon--blue' : item.prop_data.status =='Upcoming' ? 'ribbon ribbon--darkblue' : 'ribbon ribbon--yellow' ">
+                  {{item.prop_data.status}}</div>
+              </mat-card-header>
+  
+  
+              <ng-container *ngFor="let object of propertyImage">
+                <ng-template [ngIf]="object.prop_id  == item.prop_data.id">
+                  <div class=" property-card style3 h_img">
+                    <img  mat-card-image 
+                      src='https://wellkinsstorageprod.blob.core.windows.net/{{object.property_img}}' />
+  
+                  </div>
+  
+                </ng-template>
+              </ng-container>
+              <mat-card-content>
+                <ul class="list-project-detail">
+                  <!-- <li>LVR:<span > {{ item.LVR }} </span></li>
+                              <li>Returns: <span>{{ item.returns }}</span></li> -->
+                  <li>Term: <span>{{ item.prop_data.term }}</span></li>
+                  <li>Value :<span>{{ item.prop_data.facility }}</span></li>
+                  <!-- <li>Facility: <span>{{ item.facility }}</span></li> -->
+                </ul>
+              </mat-card-content>
+              <mat-card-footer>
+                
+                <button  mat-raised-button matTooltip="Remove Property" style='margin-right:16px'
+                  aria-label="Example mini fab with a heart icon" (click)="onRemoveClick(item)"
+                  >
+                  <mat-icon>delete</mat-icon>
+                  Remove 
+                </button> 
+                <button class="btn style3" mat-raised-button matTooltip="Invest Now" style="background-color: aqua !important;"
+                aria-label="Example mini fab with a heart icon" (click)="onbuyNowClick(item.prop_data)"
+                [disabled]="item.prop_data.status =='Closed' || item.prop_data.status =='Completed'">
+                Invest Now
+              </button>
+              </mat-card-footer>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

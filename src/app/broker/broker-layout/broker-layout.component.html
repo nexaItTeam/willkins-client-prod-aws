@@ -1,0 +1,41 @@
+<kendo-drawer-container>
+    
+    <kendo-drawer class="weureiu" #drawer [items]="items" mode="push" [mini]="true" [expanded]="true"
+        (select)="onSelect($event)" [autoCollapse]="false" [isItemExpanded]="isItemExpanded">
+        <ng-template kendoDrawerHeaderTemplate>
+            <div class="mt-4">
+                <span class="mail-box"><img src="assets/images/welkins-white.png" width="125" alt="logo"></span> 
+            </div>
+          </ng-template>
+          <ng-template kendoDrawerFooterTemplate>
+            <div   style="text-align: center; position: absolute; bottom:50px;right: 130px ">
+                <a (click)="onLogout()" matTooltip="Logout" aria-label="Logout" style="font-size: 18px;"><i class="fa-solid fa-power-off"></i> Logout</a>
+            </div>
+            
+          </ng-template>
+    </kendo-drawer>
+
+
+
+    <kendo-drawer-content>
+        <div class="custom-toolbar d-flex justify-content-between align-items-center">
+            <div class="logo-area w-50">
+                 <button kendoButton [svgIcon]="menuSvg" fillMode="flat" style="color:white" (click)="drawer.toggle()"></button>
+                
+
+
+            </div>
+            <div class="icon-oio">
+                <ul class="list-items list-style-none m-0">
+                    <kendo-switch [(ngModel)]="checked" (valueChange)="onswitchAccount()" onLabel="Broker" offLabel="Client" style="width: 85px;">
+                    </kendo-switch>
+                    <li><a><i class="fa-solid fa-bell"></i></a></li>
+                    <li><a><i class="fa-solid fa-user"></i></a></li>
+                   
+
+                </ul>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </kendo-drawer-content>
+</kendo-drawer-container>

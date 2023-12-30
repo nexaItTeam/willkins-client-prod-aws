@@ -1,0 +1,121 @@
+<div style="height:100px"> </div>
+<app-loader></app-loader>
+<div class="col-lg-6">
+  <button class="btn btn-primary" kendoButton (click)="navigate()">
+      <i class="fa-solid fa-arrow-left"></i> Go Back
+    </button>
+  
+</div>
+<div class="row">
+  <div class="col-lg-5 col-md-12">
+      <ng-container *ngFor="let object of propertyImage">
+          <ng-template [ngIf]="object.prop_id  == propertyId">
+              <div class=" property-card style3 h_img">
+                  <img mat-card-image style="height: 300px; width:100%"
+                      src='https://wellkinsstorageprod.blob.core.windows.net/{{object.property_img}}' />
+              </div>
+          </ng-template>
+      </ng-container>
+  </div>
+   <div class="col-lg-7 col-md-12">
+      <div class="pt-4 px-3">
+          <h5 class="mb-3" style="color: white;">{{prop_name}}</h5>
+          <p  style="color: white;">{{prop_desc}}</p>
+          <h5 class="mb-3" style="color: white;">Property Performance <i class="fa fa-line-chart" style='color:white'></i></h5>
+          <p  style="color: white;">{{property_performance}}<i class="fa fa-percent" aria-hidden="true"></i> <i class="fa fa-arrow-circle-up" aria-hidden="true"></i> 
+            <span style="color:red"> compare to previous year</span></p> 
+          
+      </div>
+  </div> 
+ 
+</div>
+
+<section class="section mt-75 mb-75">
+  <div class="container-fluid">
+    <div class="main-body">
+
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+      </mat-form-field>
+
+      <div class="responsive-table">
+        <table class="k-table" mat-table [dataSource]="dataSource" matSort>
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <div></div>
+            <th mat-header-cell [style.display]="'none'" *matHeaderCellDef mat-sort-header> Order No </th>
+            <td mat-cell  [style.display]="'none'" *matCellDef="let row"> <span style="color:white">{{row.id}}</span> </td>
+          </ng-container> 
+          <ng-container matColumnDef="order_id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Order ID </th>
+            <td mat-cell *matCellDef="let row"> <span style="color:white">{{row.order_id}}</span> </td>
+          </ng-container>
+
+          <!-- Progress Column -->
+          <ng-container matColumnDef="investing_amount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Investment Amount </th>
+            <td mat-cell *matCellDef="let row"><span style="color:white">{{row.investing_amount | currency : 'USD' : 'symbol' : '1.0-0'}}</span> </td>
+          </ng-container>
+          <ng-container matColumnDef="enq_form_data">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Investment Type </th>
+            <td mat-cell *matCellDef="let row"> 
+              <span style="color:white">{{row?.enq_form_data?.investor_form_type}}</span></td>
+          </ng-container>
+          <ng-container matColumnDef="enq_prop_data">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Property Name </th>
+            <td mat-cell *matCellDef="let row">
+              
+              <span style="color:white">{{row.enq_prop_data.property_name}}</span>
+            </td>
+          </ng-container>
+
+          <!-- <ng-container matColumnDef="paidStatus">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let row"><span style="color:red">{{row.paidStatus == 0 ? "Under Review":"Under Review"}}</span> </td>
+          </ng-container> -->
+          <ng-container matColumnDef="paidStatus">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          
+            
+          <td mat-cell *matCellDef="let element">
+            <mat-form-field appearance="fill">
+             
+              <mat-select style="color:white"[(value)]="element.paidStatus "[disabled]="true">
+                <mat-option  *ngFor="let option of statusList "
+                    [value]="option.value" disabled>
+                    {{option.type}}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+          </td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let row">
+              <!-- <a  style="color:aqua; cursor:grab;" (click)="viewTransaction(row)"><u>Preview Transactions</u></a><br>
+              <a style="color:green; cursor:grab;" (click)="viewApplication(row)"><u>View Application</u></a><br>
+              <a style="color:red; cursor:grab;" (click)="viewInvoice(row)"><u>View & Download TERMS OF PAYMENT</u></a><br>
+              <a *ngIf ="row.paidStatus == 2 || row.paidStatus == 4" style="color:yellow; cursor:grab;" (click)="viewCerticate(row)"><u>View & Download Unit Certificate</u></a><br> -->
+              <kendo-floatingactionbutton [svgIcon]="svgIcon" [dialItems]="socialItems"
+              title="View all your Documents" text="Preview Documents" themeColor="tertiary"  (dialItemClick)="onfullnameClick($event,row)">
+          </kendo-floatingactionbutton>
+            </td>          
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+
+        <mat-paginator class="k-pagination" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<div style="height:200px"></div>
+<mat-stepper  #stepper>
+    <mat-step>
+      
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <ng-template matStepperIcon="edit" >
+            <mat-icon >done</mat-icon>
+          </ng-template>
+      
+    </mat-step>
+    <mat-step label>
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <ng-template matStepperIcon="edit" >
+            <mat-icon >done</mat-icon>
+          </ng-template>
+      
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>

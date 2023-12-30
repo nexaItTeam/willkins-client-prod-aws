@@ -1,0 +1,78 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+  <div class="spinner" >
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+      <p style="color: white">Please Wait. </p>  
+  </div>
+  
+  </ngx-spinner>    
+<div class="authincation h-100">
+  <div class="layer-bg">
+    <div class="layer-inner">
+      <div class="layer-image"></div>
+    </div>
+    <div class="container">
+      <div class="row gx-0 justify-content-center h-100 align-items-center bg-white">
+        <div class="col-lg-6 col-md-6">
+          <div class="bg-white p-5">
+            <h3 class="mb-3">Welcome to  <img src="assets/images/wellkins-logo.png"  width="120" /></h3>
+            <p>Welcome to Wellkins Capital. This portal will provide you with direct
+              access to your investment portfolio, a list of your managed properties
+              and, real-time transaction details. You can also download your bank
+              statement, invoices, and, transaction details and stay up-to-date with
+              the latest information.</p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="login-container">
+            <div class="login-content">
+              <div class="logo text-center">
+                <h6>Please Login to your Account</h6>
+              </div>
+              <div class="px-5 py-3">
+                <mat-card>
+                  <form class="login" [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
+                    <label class="label">UserName</label>
+                    <mat-form-field class="bg-white mb-3">
+                      <!-- <mat-icon matPrefix><i class="fa-solid fa-user"></i></mat-icon> -->
+                      <input autofocus style="color: black !important;" type="text" matInput placeholder="Username" formControlName="username">
+                    </mat-form-field>
+                    <label class="label">Password</label>
+                    <mat-form-field class="bg-white mb-3">
+                      <!-- <mat-icon matPrefix><i class="fa-solid fa-key"></i></mat-icon> -->
+                      <input style="color: black !important;" type="password" [type]="showPassword ? 'text' : 'password'" autocomplete="false" matInput placeholder="Password"
+                        formControlName="password">
+                        <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                          {{showPassword?'visibility_off':'visibility'}}
+                      </mat-icon>
+                    </mat-form-field>
+                    <div class="check-area  mb-3">
+                      <mat-checkbox class="fnt-12" formControlName="checkform" required>I have read and agree to the <a href="terms" target="_blank"><strong>Terms and Conditions</strong> </a> of use and welkins <a href="/policy" target="_blank"><strong>Privacy policy.</strong></a></mat-checkbox>
+                      <mat-error style="color:blue !important"*ngIf="loginForm.get('checkform')!.hasError('required') ">
+                        Please Check & proceed
+                    </mat-error>
+                    </div>
+                    <div class="text-center">
+                      <button class="btn btn-white w-100" type="submit" [disabled]="!loginForm.valid">Login</button>
+                    </div>
+                    <div class="text-end fnt-12 mb-3">
+                      <a class="font-white" href="/forgot">Forgot your Password?</a>
+                    </div>
+                    <div class="text-end fnt-12 mb-3">
+                      <a class="font-white" href='https://wellkins.com.au/contact_us' target="_blank">Create Account?</a>
+                    </div> 
+                    <div class="note fnt-12">
+                      <p>If you have not recieved your Username and Password, Please contact your relationship manager provided on your welcome letter.</p>
+                    </div>
+                  </form>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

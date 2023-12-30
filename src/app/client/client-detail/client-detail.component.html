@@ -1,0 +1,60 @@
+<div style="height: 100px;"></div>
+<div class="container">
+    <div class="row justify-content-center align-content-center">
+        <div class="col-lg-8 col-md-12">
+            <div class="d-flex justify-content-between align-content-end border py-5  px-3 mb-3">
+                <!-- <h3 class="white-text"><span class="user-img"><i class="fa-solid fa-circle-user"></i></span> Edit Profile</h3> -->
+                <div class="image-container">
+                   
+                    <label class="hoverable" for="fileInput">
+                      <img [src]="this.clientimageurl " />
+                      <div class="hover-text" style="color:white">Choose Image</div>
+                      <div class="background"></div>
+                    </label>
+                    <br />
+                    <input
+                      id="fileInput"
+                      type="file"
+                      [(ngModel)]="url"
+                      class="select-profile-picture"
+                      (change)="onSelectFile($event)"
+                    />
+                    <span class="message" style="color:white">Tap here to select your picture</span>
+                    
+                  </div>
+                  <br />
+               <div *ngIf="showDeleteBtn" class="edit">
+                <button  (click)="delete()" class="update" >Delete Image</button>
+                <p style ="color:red">Click on submit button after uploading Images</p>
+               </div>
+            </div>
+            <form [formGroup]="enquiryForm" class="bg-cs-light p-4">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="lab-input mb-3">
+                            <label for="">First Name</label>
+                            <input type="text" class="form-control"  formControlName="full_name">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="lab-input mb-3">
+                            <label for="">Email</label>
+                            <input type="text" class="form-control" placeholder="abc123@gmail.com" formControlName="client_email" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="lab-input mb-3">
+                            <label for="">Contact No.</label>
+                            <input type="tel" class="form-control" placeholder="Please enter your contact no" formControlName="contact_no" readonly>
+                        </div>
+                    </div>
+                
+                   
+                </div>
+                <div class="submit mt-3 text-center">
+                    <input class="btn btn-style-target px-5 py-3" (click)="onFormSubmit()" type="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
