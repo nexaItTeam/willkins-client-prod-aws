@@ -20,13 +20,14 @@
                 </div>
               </ng-template>
             </ng-container>
+            <h5 style="text-align: center;font-style: italic;"> {{item.prop_type ==3 ? 'Mortgage Fund':'Property Fund'}}</h5>
             <mat-card-content>
               <ul class="list-project-detail">
-                <!-- <li>LVR:<span > {{ item.LVR }} </span></li>
-                            <li>Returns: <span>{{ item.returns }}</span></li> -->
+              
                 <li>Term: <span>{{ item.term }}</span></li>
                 <li>Value :<span>{{ item.facility }}</span></li>
-                <!-- <li>Facility: <span>{{ item.facility }}</span></li> -->
+                <li *ngIf="item.prop_type ==3">LVR: <span>{{ item.LVR }}</span></li>
+                <li *ngIf="item.prop_type ==3">Return :<span>{{ item.returns }}</span></li>
               </ul>
             </mat-card-content>
             <mat-card-footer>
