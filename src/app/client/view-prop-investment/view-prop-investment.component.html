@@ -1,7 +1,7 @@
 <div style="height: 100px;"></div>
 <app-loader></app-loader>
-<div class="row">
-    <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200" *ngFor="let item of property">
+
+    <div class="col-xl-4 col-lg-9 col-md-6" data-aos="fade-up" data-aos-duration="1200" *ngFor="let item of property">
         <ng-container *ngFor="let object of dataSource">
         <div *ngIf = "object.value == item.id" class="property-card style3 h_card">
         <mat-card  >
@@ -56,5 +56,4 @@
           </mat-card>
     </div>
 </ng-container>
-</div>
 </div>
