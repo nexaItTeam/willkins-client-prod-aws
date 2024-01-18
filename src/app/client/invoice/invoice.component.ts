@@ -17,6 +17,7 @@ export class InvoiceComponent {
   public name:any
   public index:number
   public installmentAmount:number
+  public prop_type : string
 constructor(public _commonService:CommonService,public router:Router,private location: Location){
   
 this.invoiceInfo=this._commonService.invoiceData
@@ -24,6 +25,7 @@ console.log(this.invoiceInfo)
 this.Date= this.invoiceInfo[0].createdAt
 this.installmentAmount = this.invoiceInfo[0].enq_prop_data?.first_installment_price
 this.index =this.invoiceInfo[0].enq_form_data?.primary_index
+this.prop_type = this.invoiceInfo[0].enq_prop_data.prop_type == 3 ? "Mortgage Fund" : "Wellkins Capital Fund"
 this.getUserDetail()
 }
   @ViewChild('dataToExport', { static: false }) public dataToExport: ElementRef;

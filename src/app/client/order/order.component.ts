@@ -57,6 +57,7 @@ export class OrderComponent implements OnInit {
     "investing_amount",
     "enq_form_data",
     "enq_prop_data",
+    "prop_type",
     "paidStatus",
     "action"
   ];

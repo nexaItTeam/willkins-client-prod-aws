@@ -24,6 +24,7 @@ export class UnitCertificateComponent {
   date: any
   formType:string
   pipe = new DatePipe('en-US');
+  public prop_type:string
   constructor(public _commonService: CommonService, public router: Router, private location: Location) {
     
     this.invoiceInfo = this._commonService.invoiceData
@@ -40,6 +41,7 @@ export class UnitCertificateComponent {
     if (this.invoiceInfo[0].enq_form_data.form_a.jointInvestor.length != 0 && this.invoiceInfo[0].enq_form_data.investor_form_type == "Individual") {
       this.jointInvestorName(this.invoiceInfo[0].enq_form_data.form_a.jointInvestor)
     }
+    this.prop_type = this.invoiceInfo[0].enq_prop_data.prop_type == 3 ? "Mortgage Fund" : "Wellkins Capital Fund"
   }
   public getUserDetail() {
 
