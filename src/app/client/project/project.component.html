@@ -25,10 +25,10 @@
               <ul class="list-project-detail">
               
                 <li>Term: <span>{{ item.term }}</span></li>
-                <li>Value :<span>{{ item.facility }}</span></li>
+                <li>Value :<span>{{ item.facility | currency : 'USD' }}</span></li>
                 <li *ngIf="item.prop_type ==3">LVR: <span>{{ item.LVR }}</span></li>
                 <li *ngIf="item.prop_type ==3">Return :<span>{{ item.returns }}</span></li>
-              </ul>
+              </ul> 
             </mat-card-content>
             <mat-card-footer>
               <button *ngIf="userType !='broker'" mat-raised-button matTooltip="Add Property in Wishlist" style='margin-right:16px'
