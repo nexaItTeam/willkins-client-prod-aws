@@ -39,14 +39,14 @@ export class OrderComponent implements OnInit {
   public propertyImage: any
   public prop_name: string
   public prop_desc: string
-  public property_performance:number
+  public property_performance: number
   words: any[];
-  public originalValue:number
+  public originalValue: number
   //dataSource!: MatTableDataSource<any>;
   dataSource = new MatTableDataSource<any>;
 
-  constructor(private spinner: NgxSpinnerService, public _commonService: CommonService, private router: Router, 
-    private route: ActivatedRoute,private currencyPipe:CurrencyPipe) {
+  constructor(private spinner: NgxSpinnerService, public _commonService: CommonService, private router: Router,
+    private route: ActivatedRoute, private currencyPipe: CurrencyPipe) {
     this.clientId = sessionStorage.getItem('id')
 
 
@@ -69,9 +69,9 @@ export class OrderComponent implements OnInit {
     this.propertyId = this.words[0]
     this.prop_name = this.words[1]
     this.prop_desc = this.words[2]
-   
-    this.originalValue =this.words[4].replace(/[^a-zA-Z0-9 ]/g, '')
-    this.property_performance = ((this.originalValue - +this.words[3] )/ this.originalValue )* 100
+
+    this.originalValue = this.words[4].replace(/[^a-zA-Z0-9 ]/g, '')
+    this.property_performance = ((this.originalValue - +this.words[3]) / this.originalValue) * 100
     console.log(this.property_performance)
     this.getOrder()
     this.getPropertyImage()
@@ -109,7 +109,7 @@ export class OrderComponent implements OnInit {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         this.spinner.hide();
-         this.generateInvoiceonMail()
+        //  this.generateInvoiceonMail()
         this.dataSource.filterPredicate = (data: any, filter: any) => {
           return data.enq_form_data.investor_form_type.toLocaleLowerCase().includes(filter) ||
             data.enq_prop_data.property_name.toLocaleLowerCase().includes(filter) ||
@@ -157,15 +157,15 @@ export class OrderComponent implements OnInit {
   }
   generateInvoiceonMail() {
     console.log(this.dataSource.filteredData[0])
-if(!this.dataSource.filteredData[0].isEamil){
-    this.getUserDetail()
-}else{
-  return
-}
+    if (!this.dataSource.filteredData[0].isEamil) {
+      this.getUserDetail()
+    } else {
+      return
+    }
   }
 
   public getUserDetail() {
-   
+
     this.index = this.dataSource.filteredData[0].enq_form_data?.primary_index
     if (this.dataSource.filteredData[0].enq_form_data.investor_form_type != "Individual" && this.dataSource.filteredData[0].enq_form_data.investor_form_type != "Company" && this.dataSource.filteredData[0].enq_form_data.investor_form_type != "Australian public company") {
       this.name = this.dataSource.filteredData[0].enq_form_data.form_c.Trustee[this.index].title + " " + this.dataSource.filteredData[0].enq_form_data.form_c.Trustee[this.index].givennames + " " + this.dataSource.filteredData[0].enq_form_data.form_c.Trustee[this.index].surname
@@ -203,9 +203,9 @@ if(!this.dataSource.filteredData[0].isEamil){
         Monies_Due: this.currencyPipe.transform(this.dataSource.filteredData[0].investing_amount),
         immediate_payment: this.currencyPipe.transform(this.dataSource.filteredData[0].enq_prop_data?.first_installment_price * this.dataSource.filteredData[0].investing_amount / this.dataSource.filteredData[0].enq_prop_data.price_per_share),
         next_installment: this.currencyPipe.transform(this.dataSource.filteredData[0].investing_amount - (this.dataSource.filteredData[0].enq_prop_data?.first_installment_price * this.dataSource.filteredData[0].investing_amount / this.dataSource.filteredData[0].enq_prop_data.price_per_share)),
-        id:this.dataSource.filteredData[0].id,
-        date:this.pipe.transform(this.dataSource.filteredData[0].createdAt,'MM/dd/yyyy'),
-        prop_name:this.dataSource.filteredData[0].enq_prop_data.property_name
+        id: this.dataSource.filteredData[0].id,
+        date: this.pipe.transform(this.dataSource.filteredData[0].createdAt, 'MM/dd/yyyy'),
+        prop_name: this.dataSource.filteredData[0].enq_prop_data.property_name
 
       }
     }
@@ -284,7 +284,7 @@ if(!this.dataSource.filteredData[0].isEamil){
     this.dialOpen = false;
   }
   public dialOpen = false;
-  public navigate(){
+  public navigate() {
     this.router.navigate(['client/view-investment'])
   }
 }
