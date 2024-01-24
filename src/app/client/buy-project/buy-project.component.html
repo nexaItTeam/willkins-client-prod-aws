@@ -85,8 +85,8 @@
             <div class="cstm-checkbox pb-3">
                 <form [formGroup]="buyForm">
                     <mat-checkbox formControlName="consent" required>
-                        I confirm my intention to invest in the Fund and I confirm that I have viewed and downloaded
-                        the PDS, SPDS, TMD and FSG before investing in the Fund.
+                       <p style="color:white"> I confirm my intention to invest in the Fund and I confirm that I have viewed and downloaded
+                        the PDS, SPDS, TMD and FSG before investing in the Fund.</p>
                     </mat-checkbox>
                     <mat-error *ngIf="buyForm.get('consent')!.hasError('required')">Required
                     </mat-error>

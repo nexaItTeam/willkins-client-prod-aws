@@ -159,11 +159,11 @@ my-app>.k-icon.k-i-loading {
 .mdc-checkbox .mdc-checkbox__native-control[data-indeterminate=true]:enabled~.mdc-checkbox__background {
   border-color: #37D159 !important;
   background-color: #37D159 !important;
-  color: #fff;
+  color:black;
 }
 
 .mdc-checkbox .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark {
-  color: #fff !important;
+  color:black !important;
 }
 
 .mat-step-icon-state-edit {
@@ -450,7 +450,7 @@ my-app>.k-icon.k-i-loading {
   font-weight: 600;
   font-size: 14px;
   margin-bottom: 5px;
-  color:#fff
+  color:black
 }
 
 .theme-color {
@@ -916,7 +916,7 @@ input[type=number] {
 
 .check-area .mat-mdc-checkbox label,
 .check-area .mat-mdc-checkbox label a {
-  color: #fff;
+  color:white;
   font-size: 12px;
 }
 
@@ -1093,7 +1093,7 @@ form {
 }
 .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background,
 .mdc-checkbox:hover .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background {
-border-color: #fff;
+border-color: black;
 
 }
 
@@ -1120,11 +1120,11 @@ text {
 }
 .add-enquiry .mdc-checkbox .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark,
 .add-enquiry  .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background{
-  color: #fff!important;
+  color: black;
 }
 .add-enquiry .mat-mdc-checkbox label, .mat-step-text-label, .mat-mdc-text-field-wrapper .mat-mdc-form-field-infix .mat-mdc-floating-label, .mat-horizontal-stepper-content {
   font-family: 'Poppins', sans-serif;
-  color: #ffff!important;
+  color: black!important;
 }
 .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading, 
 .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch, 
@@ -1246,29 +1246,29 @@ text {
 }
 .cstm-checkbox .mdc-checkbox:hover .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background,
 .form-section .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background {
-  border-color: #fff!important;
+  border-color:black!important;
   background-color: transparent;
 }
 .cstm-checkbox .mdc-checkbox {
   padding: 20px 13px;
 }
 .mat-stepper-vertical, .mat-stepper-horizontal {
-  background: #21212d!important;
+  background:white!important;
 }
 .content-wrapper {
   background: #21212d;
 }
 .form-section .mat-mdc-radio-button.mat-accent {
-  --mdc-radio-disabled-selected-icon-color: #ffff;
-  --mdc-radio-disabled-unselected-icon-color: #fff;
-  --mdc-radio-unselected-hover-icon-color: #ffff;
-  --mdc-radio-unselected-icon-color: #fff;
+  --mdc-radio-disabled-selected-icon-color: black;
+  --mdc-radio-disabled-unselected-icon-color:black
+  --mdc-radio-unselected-hover-icon-color: black;
+  --mdc-radio-unselected-icon-color:black
 }
 .form-section  .mdc-form-field>label {
-  color: #fff;
+  color:black;
 }
 .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
-  color: #ffff!important;
+  color: black!important;
 }
 .mat-mdc-select-arrow,
 .form-section .mat-mdc-icon-button svg {

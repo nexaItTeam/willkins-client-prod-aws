@@ -263,7 +263,7 @@ export class OrderComponent implements OnInit {
         this.viewInvoice(row)
         break;
       case 'View & Download Unit Certificate':
-        if (row.paidStatus == 2 || row.paidStatus == 4) {
+        if ( row.paidStatus == 4) {
           this.viewCerticate(row)
         } else {
           alert('Unit Certificate can be downloaded after installment are paid')

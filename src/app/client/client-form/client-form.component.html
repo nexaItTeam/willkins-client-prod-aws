@@ -11,14 +11,14 @@
            
             <div class="mb-4">
                 <div class="main-heading-bg">
-                    <h5 class="mb-0"><strong> Application Form</strong></h5>
+                    <h5 class="mb-0"><strong> Application Form [{{formTitle}}]</strong></h5>
                 </div>
 
                 <div class="row m-0 mt-3">
                     <div class="col-lg-6 col-md-6">
                         <form [formGroup]="clientIdForm">
-                            <label class="label asterix--before asterix--before">How do you want to invest?</label>
-                            <h6>Select One</h6>
+                            <label class="label asterix--before asterix--before" style="color:white">How do you want to invest?</label>
+                            <h6 style="color:white">Select One</h6>
                             <mat-form-field class="example-full-width" style="color:#fff">
                                 <mat-select style="color:#fff"(selectionChange)="onInvestorChange($event.value)"
                                     formControlName="client_type">
@@ -3251,7 +3251,7 @@
                                 </div>
                                 <hr />
                                 <div class="section-inner my-3">
-                                    <p class="main-paragraph mb-5" style="color:#fff">Please complete your bank account details below.
+                                    <p class="main-paragraph mb-5" style="color:black">Please complete your bank account details below.
                                         Please
                                         note the account must be held
                                         in
@@ -3436,7 +3436,7 @@
 
                                                         <div class="row-resize-handle">
                                                             <div class=" my-3">
-                                                                <label style="color:#fff">Please select</label>
+                                                                <label style="color:black">Please select</label>
 
                                                                 <mat-form-field>
 
@@ -3867,7 +3867,7 @@
                     </mat-step>
 
                     <mat-step [stepControl]="clientDeclaration" label="Declaration" errorMessage="Form is not Valid.">
-                        <div class="list-items mb-5" style="color:white">
+                        <div class="list-items mb-5" style="color:black">
                          
                             <ul class="list-menu">
                                 <h4>I/We declare and/or acknowledge and agree that:</h4>  
@@ -3940,7 +3940,7 @@
                                         <div [formGroupName]="i">
                                             <div class="section-inner my-3">
                                                 <div class="example-wrapper mb-3">
-                                                    <label class="mr-2" for="name"><span style="color:#fff">Signature: {{i + 1}}</span>
+                                                    <label class="mr-2" for="name"><span style="color:black">Signature: {{i + 1}}</span>
                                                             
                                                     </label>
                                                     <div>

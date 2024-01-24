@@ -106,7 +106,7 @@ export class ClientFormComponent implements OnInit {
   public clientNumber:string | number
   public canProceed: boolean = false
   //download pdf
-
+public formTitle : string
   @ViewChild('IndividualData') IndividualData!: ElementRef;
   @ViewChild('BankData') BankData!: ElementRef;
   @ViewChild('trustData') trustData!: ElementRef;
@@ -128,6 +128,7 @@ export class ClientFormComponent implements OnInit {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
+      this.formTitle = this._commonService.propertyData[1].prop_type == 3 ? 'Mortgage Fund ARSN(673 559 576)':'Property Fund'
   }
   async ngOnInit() {
 
