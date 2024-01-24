@@ -27,7 +27,7 @@ constructor( private router:Router,public _authService:AuthService, private _dia
   //this.items = this.mapItems(router.config as Item[]);
  this.client_type= sessionStorage.getItem('client_type')
  this.client_name = sessionStorage.getItem('client_name')
- debugger
+ 
  if(sessionStorage.getItem('client_image') != 'null'){
  this.client_image = 'https://wellkinsstorageprod.blob.core.windows.net/document/'+ sessionStorage.getItem('client_id')+ sessionStorage.getItem('client_image')
  }

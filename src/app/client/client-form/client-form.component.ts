@@ -128,7 +128,9 @@ public formTitle : string
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
-      this.formTitle = this._commonService.propertyData[1].prop_type == 3 ? 'Mortgage Fund ARSN(673 559 576)':'Property Fund'
+     
+     
+     
   }
   async ngOnInit() {
 
@@ -898,7 +900,7 @@ public formTitle : string
     }
   }
   onSubmit() {
-    debugger
+    
     this.canProceed = false
     this.spinner.show()
     this.checkformValidation(this.clientIdForm.get('client_type').value)
@@ -2463,6 +2465,7 @@ public formTitle : string
       this.investmentType = this._commonService.orderData[0].enq_form_data.investor_form_type
       this.propertyAmount = this._commonService.orderData[0].investing_amount;
       this.propertyName = this._commonService.orderData[0].enq_prop_data.property_name
+      this.formTitle = this._commonService?.orderData[0]?.enq_prop_data.prop_type == 3 ? 'Mortgage Fund ARSN(673 559 576)':'Property Fund'
       this.clientIdForm.patchValue({ 'client_type': this._commonService.orderData[0].enq_form_data.investor_form_type })
 
       this.clientFormA.patchValue(this.formValue.form_a);
@@ -2483,6 +2486,7 @@ public formTitle : string
       this.canEdit = false
       this.propertyAmount = this._commonService.propertyData[0]?.InvestmentAmount
       this.propertyName = this._commonService.propertyData[1]?.property_name
+      this.formTitle = this._commonService?.propertyData[1]?.prop_type == 3 ? 'Mortgage Fund ARSN(673 559 576)':'Property Fund'
     }
   }
 
