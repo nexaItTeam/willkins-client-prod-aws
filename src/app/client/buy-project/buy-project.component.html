@@ -14,8 +14,8 @@
         </div>
         <div class="col-lg-7 col-md-12">
             <div class="pt-4 px-3">
-                <h5 class="mb-3">{{propertyData.property_name}}</h5>
-                <p>{{propertyData.desc}}</p>
+                <h5 class="mb-3"  style="color:black">{{propertyData.property_name}}</h5>
+                <p style="color:black">{{propertyData.desc}}</p>
                 <div class="mb-4">
                     <a class="btn btn-style-target" (click)="checkPdf('PDS')"
                         href="https://wellkinsstorageprod.blob.core.windows.net/pds/{{propertyData.pds}}"
@@ -34,12 +34,12 @@
             <form [formGroup]="buyForm">
                 <div class="buy-en">
                     <div class="mb-2">
-                        <label style="color:white">Number of units you want to invest ?
+                        <label style="color:black">Number of units you want to invest ?
                         </label>
                         <mat-form-field appearance="outline">
 
 
-                            <input style="color:white" matInput placeholder=" ex. 2 " pattern="^[1-9]\d*$"
+                            <input matInput placeholder=" ex. 2 " pattern="^[1-9]\d*$"
                                 formControlName="share">
                         </mat-form-field>
                         <mat-error *ngIf="buyForm.get('share')!.hasError('required')"> Please enter
@@ -48,10 +48,10 @@
                             Leading Zeroes, Decimal & special characters Not Allowed</mat-error>
                     </div>
                     <div class="mb-2">
-                        <label style="color:white">Total amount invested
+                        <label style="color:black">Total amount invested
                         </label>
                         <mat-form-field appearance="outline">
-                            <input style="color:white" matInput formControlName="InvestmentAmount" readonly
+                            <input style="color:black" matInput formControlName="InvestmentAmount" readonly
                                 [value]="  this.buyForm.get('share')!.value * propertyData.price_per_share | currency : 'USD' ">
 
 
@@ -69,13 +69,13 @@
 
             <div class="list-items mb-5">
                 <ul class="list-menu">
-                    <li>Click here to view and <a (click)="checkPdf('FSG')"
+                    <li style="color:black">Click here to view and <a (click)="checkPdf('FSG')"
                             href="https://wellkinsstorageprod.blob.core.windows.net/fsg/{{propertyData.fsg}}"
                             target="_blank"> download the FSG</a> </li>
-                    <li>Click here to view and <a (click)="checkPdf('TDM')"
+                    <li style="color:black">Click here to view and <a (click)="checkPdf('TDM')"
                             href="https://wellkinsstorageprod.blob.core.windows.net/tdm/{{propertyData.tdm}}"
                             target="_blank">download the TDM</a> </li>
-                    <li> Click here to view and <a (click)="checkPdf('Brochure')"
+                    <li style="color:black" > Click here to view and <a (click)="checkPdf('Brochure')"
                             href="https://wellkinsstorageprod.blob.core.windows.net/brochure/{{propertyData.brocher}}"
                             target="_blank">download the Fund brochure</a> </li>
 
@@ -84,8 +84,8 @@
 
             <div class="cstm-checkbox pb-3">
                 <form [formGroup]="buyForm">
-                    <mat-checkbox formControlName="consent" required>
-                       <p style="color:white"> I confirm my intention to invest in the Fund and I confirm that I have viewed and downloaded
+                    <mat-checkbox  style="color:black" formControlName="consent" required>
+                       <p style="color:black"> I confirm my intention to invest in the Fund and I confirm that I have viewed and downloaded
                         the PDS, SPDS, TMD and FSG before investing in the Fund.</p>
                     </mat-checkbox>
                     <mat-error *ngIf="buyForm.get('consent')!.hasError('required')">Required

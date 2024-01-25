@@ -39,6 +39,7 @@ import {
 import { ClientTransactionComponent } from './client-transaction/client-transaction.component';
 import { ViewPropInvestmentComponent } from './view-prop-investment/view-prop-investment.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
+import { PrintFormComponent } from './print-form/print-form.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ClientDetailComponent } from './client-detail/client-detail.component';
     ClientTransactionComponent,
     ViewPropInvestmentComponent,
     ClientDetailComponent,
+    PrintFormComponent,
 
   ],
   imports: [

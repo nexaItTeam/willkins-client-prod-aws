@@ -1114,8 +1114,9 @@ text {
 .mat-mdc-header-cell{
   border-bottom-color: #9E9E9E!important;
 }
+
 .mat-mdc-dialog-container .mdc-dialog__surface {
-  background-color:  #21212d!important;
+  background-color: white!important;
   color: #fff;
 }
 .add-enquiry .mdc-checkbox .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark,
@@ -1129,7 +1130,7 @@ text {
 .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading, 
 .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch, 
 .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
-  border-color: #fff!important;
+  border-color: black!important;
 }
 .bl-input::placeholder{
   color: #fff!important;
@@ -1241,7 +1242,7 @@ text {
   background-color: #12C76D;
 }
 .cstm-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background {
-  border-color: rgb(241 239 239);
+  border-color:black!important;
   background-color: transparent;
 }
 .cstm-checkbox .mdc-checkbox:hover .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background,
@@ -1296,4 +1297,8 @@ kendo-floatingactionbutton.k-pos-fixed.k-pos-bottom-end {
 }
 .k-header .k-link{
   text-align: left;
+}
+.k-grid table tr:hover td {
+  background :rgb(107, 188, 242) !important;
+  cursor: pointer !important;
 }

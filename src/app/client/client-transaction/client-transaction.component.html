@@ -10,7 +10,7 @@
    
     <h4 style="color: white;">Transaction Details</h4>
     <div class="bg-white">
-        <kendo-grid [data]="transactionData"  [pageSize]="10" [pageable]="true"
+        <kendo-grid [data]="transactionData"    [pageSize]="10" [pageable]="true"
             [resizable]="true"  >
             <ng-template kendoGridToolbarTemplate>
                 
@@ -18,16 +18,12 @@
                 <button class="btn btn-info" kendoGridPDFCommand>Export to PDF</button>
                 <button class="btn btn-dark" kendoGridExcelCommand type="button">Export to Excel</button>
             </ng-template>
-            <kendo-grid-column field="createdAt" title=" Date"> 
+            <kendo-grid-column field="transaction_date" title="Date"> 
                 <ng-template kendoGridCellTemplate let-dataItem>
-                    {{dataItem.createdAt | date :'dd/MM/yyyy' }}
+                    {{dataItem.transaction_date == null ? (dataItem.createdAt | date :'dd/MM/yyyy') : ( dataItem.transaction_date | date :'dd/MM/yyyy')}}
                 </ng-template>
             </kendo-grid-column>
-            <!-- <kendo-grid-column field="createdAt" title=" Date"> 
-                <ng-template kendoGridCellTemplate let-dataItem>
-                    {{dataItem.createdAt | date :'dd/MM/yyyy' }}
-                </ng-template>
-            </kendo-grid-column> -->
+           
             <kendo-grid-column field="order_id" title="Order Number"
             [class]="{ 'text-center': true }" [resizable]="true">
             <ng-template kendoGridGroupHeaderTemplate let-group="group">
@@ -36,25 +32,15 @@
                 </span>
               </ng-template>
         </kendo-grid-column>
-            <kendo-grid-column field="property_name" title="Particulars"
-            [class]="{ 'text-center': true }" [resizable]="true">
-            <ng-template kendoGridGroupHeaderTemplate let-group="group">
-                <span style="text-decoration: underline;">
-                  {{ group.value }}
-                </span>
-              </ng-template>
-        </kendo-grid-column>
-          <!--   <kendo-grid-column-group title="Units" [headerStyle]="{'justify-content': 'center'}">
-            <kendo-grid-column field="units_acquired" title="Acquired">
-
-            </kendo-grid-column>
-            <kendo-grid-column field="units_transferred" title="Transferred"> 
-               
-            </kendo-grid-column>            
-            <kendo-grid-column field="units_balance" title="Balance" [class]="{ 'text-center': true }"
-            [resizable]="false">
-           </kendo-grid-column>
-        </kendo-grid-column-group> -->
+        <kendo-grid-column field="transaction_type" title="Description"
+        [class]="{ 'text-center': true }" [resizable]="true">
+        <ng-template kendoGridGroupHeaderTemplate let-group="group" let-dataItem>
+            <span style="text-decoration: underline;">
+              {{ group.value  }}
+            </span>
+          </ng-template>
+    </kendo-grid-column>
+         
         
         <kendo-grid-column field="investing_amount" [class]="{ 'text-center': true }" title="Debit"
         >
