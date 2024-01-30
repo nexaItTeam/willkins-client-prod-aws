@@ -1844,6 +1844,7 @@ public formTitle : string
         );
       }
     }
+   
   }
   //will upload individual option 1 image
   uploadFileAttachments() {
@@ -2491,7 +2492,7 @@ public formTitle : string
       this.clientDeclaration.patchValue(this.formValue.form_g)
       this.clientCompany.patchValue(this.formValue.form_h)
       this.getFormArrayValue();
-      //this.pushSign_Declaration();
+      this.pushSign_Declaration();
 
 
       this.spinner.hide()
