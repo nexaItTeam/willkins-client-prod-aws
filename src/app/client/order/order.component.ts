@@ -138,7 +138,7 @@ export class OrderComponent implements OnInit {
 
     this._commonService.orderData = []
     this._commonService.orderData.push(row)
-    this.router.navigate(['client/client-form'])
+    this.router.navigate(['client/print-application'])
   }
   viewInvoice(row) {
 

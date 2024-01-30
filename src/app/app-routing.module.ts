@@ -33,6 +33,7 @@ import { UnitCertificateComponent } from './client/unit-certificate/unit-certifi
 import { ClientTransactionComponent } from './client/client-transaction/client-transaction.component';
 import { ViewPropInvestmentComponent } from './client/view-prop-investment/view-prop-investment.component';
 import { ClientDetailComponent } from './client/client-detail/client-detail.component';
+import { PrintFormComponent } from './client/print-form/print-form.component';
 
 
 
@@ -59,6 +60,7 @@ const routes: Routes = [
   component: TermsConditionComponent,
   
 },
+
 {
   path: 'policy',
   component: PrivacyComponent,
@@ -149,6 +151,11 @@ const routes: Routes = [
       path: 'changePassword',
       component: ChangePasswordComponent,
 
+    },
+    {
+      path: 'print-application',
+      component: PrintFormComponent,
+      
     },
 
   ]

@@ -17,10 +17,10 @@
                 <div class="row m-0 mt-3">
                     <div class="col-lg-6 col-md-6">
                         <form [formGroup]="clientIdForm">
-                            <label class="label asterix--before asterix--before" style="color:white">How do you want to invest?</label>
-                            <h6 style="color:white">Select One</h6>
+                            <label class="label asterix--before asterix--before" style="font-style: bold;">How do you want to invest?</label>
+                            <h6 style="font-style: bold;">Select One</h6>
                             <mat-form-field class="example-full-width" style="color:#fff">
-                                <mat-select style="color:#fff"(selectionChange)="onInvestorChange($event.value)"
+                                <mat-select style="font-style: bold;"(selectionChange)="onInvestorChange($event.value)"
                                     formControlName="client_type">
                                     <mat-option *ngFor="let option of list " [value]="option.value" [disabled]="canEdit">
                                         {{option.type}}
@@ -36,9 +36,9 @@
                 </div>
                 <div>
                     <ul>
-                        <li><span style="color: #fff;">Property name:- {{propertyName}}</span> </li>
+                        <li><span style="font-style: bold;">Property name:- {{propertyName}}</span> </li>
 
-                        <li><span style="color: #fff;">Total investment:- {{propertyAmount | currency : 'USD' }}</span> </li>
+                        <li><span style="font-style: bold;">Total investment:- {{propertyAmount | currency : 'USD' }}</span> </li>
                     </ul>
                 </div>
                 <!--                

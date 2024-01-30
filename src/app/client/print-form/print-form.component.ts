@@ -32,8 +32,8 @@ import { Location } from '@angular/common'
 
 })
 export class PrintFormComponent implements OnInit {
-  @ViewChild('stepper') stepper: MatStepper;
-  @ViewChild('cdkStepper') cdkStepper: MatStepper | undefined;
+  
+ 
   public designation = designationList
   public domesticCompany = domesticcomapnyList
   public privateCompany = privatecompanyList
@@ -1282,12 +1282,10 @@ public formTitle : string
     if (option != "Unregulated" && option != "Company") {
       this.pushOnchangeAttachments()
     }
-    this.move()
+   
   }
   //after selection change move stepper back to 1 positon
-  move() {
-    this.stepper.selectedIndex = 0;
-  }
+ 
   onAustrallianResidentChange(value, i, formnumber) {
     
 //show errors on dropdown changes
@@ -1828,6 +1826,20 @@ public formTitle : string
           email: [this.formValue.form_h.Director[i].email],
           iscompanyprimary: [this.formValue.form_h.Director[i].iscompanyprimary]
 
+        })
+        );
+      }
+    }
+    if (this.formValue.form_g.clientDeclarationAttachments.length != 0) {
+      for (let i = 0; i < this.formValue.form_g.clientDeclarationAttachments.length; i++) {
+
+        this.clientDeclarationAttachments = this.f3['clientDeclarationAttachments'] as FormArray;
+        this.clientDeclarationAttachments.push(this._fb.group({
+          signature_1_name: [this.formValue.form_g.clientDeclarationAttachments[i].signature_1_name],
+          signature_1_title: [this.formValue.form_g.clientDeclarationAttachments[i].signature_1_title],
+          signature_1_date: [this.formValue.form_g.clientDeclarationAttachments[i].signature_1_date],
+          signaturefilename:[this.formValue.form_g.clientDeclarationAttachments[i].signaturefilename],
+          designation:[this.formValue?.form_g?.clientDeclarationAttachments[i]?.designation],
         })
         );
       }
@@ -2479,7 +2491,7 @@ public formTitle : string
       this.clientDeclaration.patchValue(this.formValue.form_g)
       this.clientCompany.patchValue(this.formValue.form_h)
       this.getFormArrayValue();
-      this.pushSign_Declaration();
+      //this.pushSign_Declaration();
 
 
       this.spinner.hide()

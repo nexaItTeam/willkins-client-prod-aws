@@ -471,7 +471,12 @@ my-app>.k-icon.k-i-loading {
   padding: 10px 15px;
   color: #fff;
 }
-
+.main-title{
+  background:#218380;
+  padding: 10px 15px;
+  color: #fff;
+  text-align: center;
+}
 .main-heading-bg {
   background: #21b3f4;
   color: #fff;
@@ -1257,7 +1262,7 @@ text {
   background:white!important;
 }
 .content-wrapper {
-  background: #21212d;
+  background: white;
 }
 .form-section .mat-mdc-radio-button.mat-accent {
   --mdc-radio-disabled-selected-icon-color: black;
