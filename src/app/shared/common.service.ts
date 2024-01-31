@@ -34,6 +34,7 @@ export class CommonService {
   public propertyData = []
   public orderData = []
   public invoiceData = []
+  public transactionData =[]
   constructor(
     private _roleService: RoleService,
     private _http: HttpClient

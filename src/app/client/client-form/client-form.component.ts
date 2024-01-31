@@ -943,7 +943,7 @@ public formTitle : string
           "investing_amount": this._commonService.propertyData[0].InvestmentAmount,
           "investment_unit": this._commonService.propertyData[0].share,
           "paidStatus": false,
-          id: this.formValue != undefined ? this.formValue.id : null,
+         // id: this.formValue != undefined ? this.formValue.id : null,
           "isDraft": false,
           "form_a":
             this.clientFormA.value,

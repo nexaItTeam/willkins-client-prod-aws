@@ -584,10 +584,7 @@
                                     </div>
                                     <div class="section-inner my-3">
                                         <form [formGroup]="clientFormA">
-                                            <div class="mb-3">
-                                                <button [hidden]='canEdit' class=" w-btn  btn-style2" type="button"
-                                                    (click)="onaddJointHolderLevel($event)">Add Joint Holder</button>
-                                            </div>
+                                            
                                             <div formArrayName="jointInvestor">
                                                 <ng-container
                                                     *ngFor="let row of  f1?.jointInvestor['controls'] ; let i = index">
@@ -1112,10 +1109,7 @@
                                                         <button class="btn btn-danger" type="button" [hidden]='canEdit '
                                                             (click)="removejointholder(i)">Remove</button>
 
-                                                        <button class=" btn-style2" type="button" [hidden]='canEdit'
-                                                            (click)="onaddJointHolderLevel($event)">Add Joint
-
-                                                            Holder</button>
+                                                       
 
 
                                                     </div>
@@ -1484,24 +1478,7 @@
 
                                                     </div>
 
-                                                    <div
-                                                        *ngIf="this.clientIdForm.get('client_type').value !='Australian public company'">
-                                                        <button class="btn btn-danger" type="button"
-                                                            [hidden]='canEdit || i === 0'
-                                                            (click)="removeCompany(i)">Remove</button>
-                                                        <button class=" btn-style2" type="button" [hidden]='canEdit'
-                                                            (click)="onaddDirectorLevel($event)">Add Director
-                                                        </button>
-                                                    </div>
-                                                    <div
-                                                        *ngIf="this.clientIdForm.get('client_type').value =='Australian public company'">
-                                                        <button class="btn btn-danger" type="button"
-                                                            [hidden]='canEdit || i === 0 || i === 1 || i === 2'
-                                                            (click)="removeCompany(i)">Remove</button>
-                                                        <button class=" btn-style2" type="button" [hidden]='canEdit'
-                                                            (click)="onaddDirectorLevel($event)">Add Director
-                                                        </button>
-                                                    </div>
+                                                   
 
 
 
@@ -2283,20 +2260,11 @@
                                                                 </div>
 
 
-                                                                <button class="btn btn-danger" type="button"
-                                                                    [hidden]='canEdit || i === 0'
-                                                                    (click)="removeTrustee(i)">Remove
-                                                                </button>
+                                                               
 
-                                                                <button class=" btn-style2" type="button"
-                                                                    [hidden]='canEdit || i === 0'
-                                                                    (click)="onaddTrusteeLevel(i)">Add Trustee
-                                                                </button>
+                                                              
 
-                                                                <button class=" btn-style2" type="button"
-                                                                    [hidden]="clientFormC.get('Trustee').value.length > 1"
-                                                                    (click)="onaddTrusteeLevel($event)">Add Trustee
-                                                                </button>
+                                                                
                                                             </div>
                                                         </div>
                                                     </ng-container>

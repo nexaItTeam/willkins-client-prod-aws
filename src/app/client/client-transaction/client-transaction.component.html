@@ -1,73 +1,169 @@
-
 <div class="col-lg-6">
     <button class="btn btn-primary" kendoButton (click)="navigate()">
         <i class="fa-solid fa-arrow-left"></i> Go Back
-      </button>
-    
-  </div>
+    </button>
+
+</div>
+
 <div class="main-body">
+
     <app-loader></app-loader>
-   
+
     <h4 style="color: white;">Transaction Details</h4>
     <div class="bg-white">
-        <kendo-grid [data]="transactionData"    [pageSize]="10" [pageable]="true"
-            [resizable]="true"  >
+        <kendo-grid [data]="transactionData" [pageSize]="10" [pageable]="true" [resizable]="true">
             <ng-template kendoGridToolbarTemplate>
-                
+
                 <kendo-grid-spacer></kendo-grid-spacer>
-                <button class="btn btn-info" kendoGridPDFCommand>Export to PDF</button>
+                <button class="btn btn-dark" kendoGridPDFCommand type="button">Export to PDF</button>
                 <button class="btn btn-dark" kendoGridExcelCommand type="button">Export to Excel</button>
             </ng-template>
-            <kendo-grid-column field="transaction_date" title="Date"> 
+            <!-- without papersize header wont get display -->
+            <kendo-grid-pdf fileName="Products.pdf" paperSize="A3" [allPages]="true">
+                <kendo-grid-pdf-margin top="20cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
+                <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+                    <div class="page-template">
+                        <div class="header">
+
+                            <div class="row d-flex align-items-baseline mb-3">
+                                <div class="col-xl-6">
+
+                                    <h3 style="color:#1b4a9b;margin-top: 20px;"><strong>Investment Statement</strong>
+                                    </h3>
+                                    <ul style="margin-top: 30px;" class="list-unstyled">
+                                        <li class="text-muted d-flex justify-content-between">
+                                            <h5><span *ngIf="showIndividualInvestname"
+                                                    style="font-weight: bold; color:black;">{{name}}</span>
+                                                <span 
+                                                    style="font-weight: bold; color:black;">{{joint_investor}}</span>
+                                            </h5>
+                                            <h6 *ngIf="company_trustName !=''"><span
+                                                    style="font-weight: bold; color:black;">{{company_trustName}}</span>
+                                            </h6>
+                                        </li>
+                                        <li class="text-muted d-flex justify-content-between">
+                                            <h6>Date:{{date | date : 'dd/MM/yyyy' }}</h6>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-xl-6  text-end">
+                                    <img class="pb-3" src="assets/images/wellkins-logo.png" alt="Logo" width="200">
+                                    <h3 style="color:black" class=" text-end">{{prop_type}}
+                                    </h3>
+
+                                    <ul class="list-unstyled"
+                                        style="max-width: 250px; margin-left: auto; margin-top: 20px;">
+
+                                        <li class="text-muted d-flex justify-content-between">
+                                            <div><span class="fw-bold">Address
+                                                    :4.01/5 Celebration Drive,<br>
+                                                    Bella Vista NSW 2153</span></div>
+
+                                        </li>
+                                        <li class="text-muted d-flex justify-content-between">
+                                            <div class="fw-bold"> ARSN:{{ARSN}}</div>
+                                        </li>
+                                        <li class="text-muted d-flex justify-content-between">
+                                            <div class="fw-bold">ABN: 12 608 424 488</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row d-flex align-items-baseline mb-3">
+                                <div class="col-xl-8">
+
+                                    <h3 style="color:#1b4a9b"><strong>{{propertyData.property_name}}</strong>
+                                    </h3>
+                                    <ul class="list-unstyled">
+                                        <li class="text-muted d-flex justify-content-between">
+                                            <h6> No. of Units: {{invoiceInfo[0].investment_unit | number}}</h6>
+                                        </li>
+                                        <li class="text-muted d-flex justify-content-between">
+                                            <h6>Investment Amount: {{invoiceInfo[0].investing_amount |
+                                                currency : 'USD' : 'symbol' : '1.0-0'
+                                                }}</h6>
+                                        </li>
+                                        <li class="text-muted d-flex justify-content-between">
+                                            <h6>Term:{{propertyData.term}}</h6>
+                                        </li>
+                                        <li *ngIf="invoiceInfo[0].enq_prop_data.prop_type == 3" class="text-muted d-flex justify-content-between">
+                                            <h6>LVR: {{propertyData.LVR}}</h6>
+                                        </li>
+                                        <li *ngIf=" invoiceInfo[0].enq_prop_data.prop_type == 3" class="text-muted d-flex justify-content-between">
+                                            <h6>Return: {{propertyData.returns}}</h6>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <h6 style="color:red;font-size: bold;"> Please do not share your Login Credentials, PIN
+                                (Personal Identification Number), Client ID
+                                and OTP (One Time Password) with anyone over mail, SMS, phone call or any
+                                other media.<br>
+                                **This is a computer generated statement and does not require a signature.<br>
+                                Page {{ pageNum }} of {{ totalPages }}
+                            </h6>
+                        </div>
+                    </div>
+                </ng-template>
+            </kendo-grid-pdf>
+            <kendo-grid-column [headerStyle]="{ 'color': '#1b4a9b',justifyContent: 'center' }" field="transaction_date"
+                title="Date">
                 <ng-template kendoGridCellTemplate let-dataItem>
-                    {{dataItem.transaction_date == null ? (dataItem.createdAt | date :'dd/MM/yyyy') : ( dataItem.transaction_date | date :'dd/MM/yyyy')}}
+                    {{dataItem.transaction_date == null ? (dataItem.createdAt | date :'dd/MM/yyyy') : (
+                    dataItem.transaction_date | date :'dd/MM/yyyy')}}
                 </ng-template>
             </kendo-grid-column>
-           
-            <kendo-grid-column field="order_id" title="Order Number"
-            [class]="{ 'text-center': true }" [resizable]="true">
-            <ng-template kendoGridGroupHeaderTemplate let-group="group">
-                <span style="text-decoration: underline;">
-                  {{ group.value }}
-                </span>
-              </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column field="transaction_type" title="Description"
-        [class]="{ 'text-center': true }" [resizable]="true">
-        <ng-template kendoGridGroupHeaderTemplate let-group="group" let-dataItem>
-            <span style="text-decoration: underline;">
-              {{ group.value  }}
-            </span>
-          </ng-template>
-    </kendo-grid-column>
-         
-        
-        <kendo-grid-column field="investing_amount" [class]="{ 'text-center': true }" title="Debit"
-        >
-        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-           {{ rowIndex == transactionData.length - 1 ? (dataItem.investing_amount | currency : 'USD' : 'symbol' : '1.0-0' ) : ''}} 
-       </ng-template>
-   </kendo-grid-column>
-            <kendo-grid-column field="amount_paid" title="Credit"
-            [class]="{ 'text-center': true }"  >
-                 <ng-template  kendoGridCellTemplate let-dataItem>
-                   <span style="justify-content: center;">{{dataItem.amount_paid | currency : 'USD' : 'symbol' : '1.0-0' }}</span> 
+
+            <kendo-grid-column [headerStyle]="{ 'color': '#1b4a9b',justifyContent: 'center' }" field="order_id"
+                title="Order Number" [class]="{ 'text-center': true }" [resizable]="true">
+                <ng-template kendoGridGroupHeaderTemplate let-group="group">
+                    <span style="text-decoration: underline;">
+                        {{ group.value }}
+                    </span>
                 </ng-template>
             </kendo-grid-column>
-           
-            <kendo-grid-column field="amount_unpaid" title="Balance"
-                [class]="{ 'text-center': true }" [resizable]="true">
+            <kendo-grid-column [headerStyle]="{ 'color': '#1b4a9b',justifyContent: 'center','text-center': 'true'  }"
+                field="transaction_type" title="Description" [class]="{ 'text-center': true }" [resizable]="true">
+                <ng-template kendoGridGroupHeaderTemplate let-group="group" let-dataItem>
+                    <span style="text-decoration: underline;">
+                        {{ group.value }}
+                    </span>
+                </ng-template>
+            </kendo-grid-column>
+
+
+            <kendo-grid-column [headerStyle]="{ 'color': '#1b4a9b',justifyContent: 'center' }" field="investing_amount"
+                [class]="{ 'text-center': true }" title="Debit">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                    {{ rowIndex == transactionData.length - 1 ? (dataItem.investing_amount | currency : 'USD' : 'symbol'
+                    : '1.0-0' ) : ''}}
+                </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-column [headerStyle]="{ 'color': '#1b4a9b',justifyContent: 'center' }" field="amount_paid" title="Credit"
+                [class]="{ 'text-center': true }">
                 <ng-template kendoGridCellTemplate let-dataItem>
-                     {{dataItem.amount_unpaid > 0 ? (dataItem.amount_unpaid | currency : 'USD' : 'symbol' : '1.0-0') + ' Dr' : (dataItem.amount_unpaid == null  ? '': dataItem.amount_unpaid == 0 ?  ' $0' :  (   ( -1 * dataItem.amount_unpaid) | currency : 'USD' : 'symbol' : '1.0-0') + ' Cr'  ) }} 
-               
+                    <span style="justify-content: center;">{{dataItem.amount_paid | currency : 'USD' : 'symbol' :
+                        '1.0-0' }}</span>
                 </ng-template>
             </kendo-grid-column>
-           
-           
-           
-           
-            <kendo-grid-pdf fileName="activeClient.pdf" [repeatHeaders]="true" [allPages]="true"></kendo-grid-pdf>
+
+            <kendo-grid-column [headerStyle]="{ 'color': '#1b4a9b',justifyContent: 'center' }" field="amount_unpaid"
+                title="Balance" [class]="{ 'text-center': true }" [resizable]="true">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                    {{dataItem.amount_unpaid > 0 ? (dataItem.amount_unpaid | currency : 'USD' : 'symbol' : '1.0-0') + '
+                    Dr' : (dataItem.amount_unpaid == null ? '': dataItem.amount_unpaid == 0 ? ' $0' : ( ( -1 *
+                    dataItem.amount_unpaid) | currency : 'USD' : 'symbol' : '1.0-0') + ' Cr' ) }}
+
+                </ng-template>
+            </kendo-grid-column>
+
             <kendo-grid-excel fileName="activeClient.xlsx"></kendo-grid-excel>
+
         </kendo-grid>
+
     </div>
+
 </div>

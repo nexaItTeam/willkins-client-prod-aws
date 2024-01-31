@@ -69,9 +69,9 @@
                                                     <ul class="list-unstyled">
                                                         <p style="color:black">This is to certify that</p>
                                                         <ul class="list-item my-3">
-                                                            <h5><span *ngIf="formType !='Individual'"
+                                                            <h5><span *ngIf=" showIndividualInvestname"
                                                                     style="font-weight: bold; color:black; margin-right: 5px;">{{name}}</span>
-                                                                    <span *ngIf="formType =='Individual'"
+                                                                    <span 
                                                                     style="font-weight: bold; color:black; margin-right: 5px;">{{joint_investor}}</span>
                                                             </h5>
                                                             <h6 *ngIf="company_trustName !=''"><span
