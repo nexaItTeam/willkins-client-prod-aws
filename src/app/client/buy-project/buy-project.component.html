@@ -75,7 +75,7 @@
                     <li style="color:black">Click here to view and <a (click)="checkPdf('TDM')"
                             href="https://wellkinsstorageprod.blob.core.windows.net/tdm/{{propertyData.tdm}}"
                             target="_blank">download the TDM</a> </li>
-                    <li style="color:black" > Click here to view and <a (click)="checkPdf('Brochure')"
+                    <li *ngIf="propertyData.prop_type !=3"style="color:black" > Click here to view and <a (click)="checkPdf('Brochure')"
                             href="https://wellkinsstorageprod.blob.core.windows.net/brochure/{{propertyData.brocher}}"
                             target="_blank">download the Fund brochure</a> </li>
 
