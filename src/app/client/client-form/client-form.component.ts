@@ -996,6 +996,7 @@ public formTitle : string
   }
 
   onSaveDraft() {
+   
     this.spinner.show()
     if (this.atttachments.length != 0) {
       this.uploadFileAttachments()
@@ -1021,7 +1022,7 @@ public formTitle : string
         "isDraft": true,
         "primary_index": this.primaryIndex != undefined ? this.primaryIndex : undefined,
 
-        id: this.formValue != undefined ? this.formValue.id : null,
+        id: this.formValue != undefined ? ( this.formValue.isDraft ? this.formValue.id:null ) : null,
         "form_a":
           this.clientFormA.value,
 
