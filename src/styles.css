@@ -1278,7 +1278,7 @@ text {
 }
 .mat-mdc-select-arrow,
 .form-section .mat-mdc-icon-button svg {
-  color: #fff!important;
+  color: black!important;
 }
 .k-upload .k-dropzone, .k-upload .k-upload-dropzone {
   border-color: #4c4c4c;
