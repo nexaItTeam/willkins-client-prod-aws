@@ -24,9 +24,6 @@ export class ClientDetailComponent {
       "full_name": ['', Validators.required],
       "client_email": [''],
       "contact_no": [''],
-     
-
-
     });
   }
   onSelectFile(event) {
@@ -85,7 +82,9 @@ if(event.target.files[0].type == 'image/png' || event.target.files[0].type == 'i
     }
   }
   async onFormSubmit() {
+    debugger
     this.spinner.show()
+    
     if (this.clientimageData) {
       await this.uploadindividualoption_2()
     }
@@ -95,7 +94,7 @@ if(event.target.files[0].type == 'image/png' || event.target.files[0].type == 'i
         "client": {
           "id": sessionStorage.getItem('id'),
           "full_name": this.enquiryForm.controls['full_name'].value,
-          "client_image":this.clientimageData.name,
+          "client_image":this.clientimageData != undefined ? this.clientimageData.name :  this.clientData.client_image,
         }
       }
       this._commonService

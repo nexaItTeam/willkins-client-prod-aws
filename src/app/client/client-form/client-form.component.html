@@ -4,11 +4,11 @@
     <div *ngIf="canEdit">
         <button class="btn btn-primary" kendoButton (click)="navigate()">
             <i class="fa-solid fa-arrow-left"></i> Go Back
-          </button>
+        </button>
     </div>
     <div class="content-wrapper">
         <div class="form-section">
-           
+
             <div class="mb-4">
                 <div class="main-heading-bg">
                     <h5 class="mb-0"><strong> Application Form [{{formTitle}}]</strong></h5>
@@ -17,12 +17,14 @@
                 <div class="row m-0 mt-3">
                     <div class="col-lg-6 col-md-6">
                         <form [formGroup]="clientIdForm">
-                            <label class="label asterix--before asterix--before" style="font-style: bold;">How do you want to invest?</label>
+                            <label class="label asterix--before asterix--before" style="font-style: bold;">How do you
+                                want to invest?</label>
                             <h6 style="font-style: bold;">Select One</h6>
                             <mat-form-field class="example-full-width" style="color:#fff">
-                                <mat-select style="font-style: bold;"(selectionChange)="onInvestorChange($event.value)"
+                                <mat-select style="font-style: bold;" (selectionChange)="onInvestorChange($event.value)"
                                     formControlName="client_type">
-                                    <mat-option *ngFor="let option of list " [value]="option.value" [disabled]="canEdit">
+                                    <mat-option *ngFor="let option of list " [value]="option.value"
+                                        [disabled]="canEdit">
                                         {{option.type}}
                                     </mat-option>
                                 </mat-select>
@@ -38,7 +40,9 @@
                     <ul>
                         <li><span style="font-style: bold;">Property name:- {{propertyName}}</span> </li>
 
-                        <li><span style="font-style: bold;">Total investment:- {{propertyAmount | currency : 'USD' }}</span> </li>
+                        <li><span style="font-style: bold;">Total investment:- <input [readonly]="canEdit" [value]="propertyAmount | currency : 'USD'" matInput
+                                    placeholder="Enter First name ex.Brown" formControlName="surname" required
+                                    >{{propertyAmount | currency : 'USD' }}</span> </li>
                     </ul>
                 </div>
                 <!--                
@@ -48,7 +52,7 @@
             </div>
             <div *ngIf="showForm" class="row mx-0 pb-4">
                 <mat-stepper class="mx-0 px-0" #stepper (selectionChange)="selectionChange($event)"
-                [orientation]="(stepperOrientation | async)!" >
+                    [orientation]="(stepperOrientation | async)!">
                     <ng-template matStepperIcon="edit">
                         <mat-icon>done</mat-icon>
                     </ng-template>
@@ -58,34 +62,33 @@
                             <form [formGroup]="clientFormA">
                                 <ng-template matStepLabel><span
                                         [ngStyle]="{'color': clientFormA.valid ? 'green' : 'red'}">
-                                       Personal details
+                                        Personal details
                                     </span></ng-template>
                                 <div class="my-4">
                                     <div class="section-inner">
-                                        <div  class="col-lg-4 col-md-6 mb-2">
-                                            <label
-                                                class="label asterix--before">Are you the person for further correspondence?</label>
-                                           
-                                                
-                                                    <mat-radio-group aria-labelledby="example-radio-group-label"
-                                                    class="example-radio-group" 
-                                                    formControlName="ispersonalprimary"  >
-                                                    <mat-radio-button *ngFor="let option of responseList "
-                                            [value]="option.value">
-                                            {{option.type}}
-                                        </mat-radio-button>
-                                                </mat-radio-group>
-                                            
-                                            
+                                        <div class="col-lg-4 col-md-6 mb-2">
+                                            <label class="label asterix--before">Are you the person for further
+                                                correspondence?</label>
+
+
+                                            <mat-radio-group aria-labelledby="example-radio-group-label"
+                                                class="example-radio-group" formControlName="ispersonalprimary">
+                                                <mat-radio-button *ngFor="let option of responseList "
+                                                    [value]="option.value">
+                                                    {{option.type}}
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+
+
                                         </div>
                                         <div class="row gx-2">
-                                           
+
                                             <div class="col-lg-4 col-md-6 mb-2">
                                                 <label class="label asterix--before asterix--before">Title</label>
                                                 <mat-form-field>
                                                     <mat-select formControlName="title" required>
-                                                        <mat-option [disabled]="canEdit"*ngFor="let option of titleList "
-                                                            [value]="option.value">
+                                                        <mat-option [disabled]="canEdit"
+                                                            *ngFor="let option of titleList " [value]="option.value">
                                                             {{option.type}}
                                                         </mat-option>
                                                     </mat-select>
@@ -132,8 +135,8 @@
                                             <div class="col-lg-4 col-md-6 mb-2">
                                                 <label class="label asterix--before">Date of birth (MM/DD/YYYY) </label>
                                                 <mat-form-field>
-                                                    <input [readonly]="true"  matInput [matDatepicker]="picker"
-                                                        formControlName="dob" [max]="maxDate" required >
+                                                    <input [readonly]="true" matInput [matDatepicker]="picker"
+                                                        formControlName="dob" [max]="maxDate" required>
                                                     <mat-hint>MM/DD/YYYY</mat-hint>
                                                     <mat-datepicker-toggle matIconSuffix
                                                         [for]="picker"></mat-datepicker-toggle>
@@ -161,8 +164,8 @@
                                             <div class="col-lg-4 col-md-6 mb-2">
                                                 <label class="label asterix--before">Phone Number</label>
                                                 <mat-form-field>
-                                                    <input [readonly]="canEdit"  matInput
-                                                        placeholder="ex. 2527515609" formControlName="phone" required>
+                                                    <input [readonly]="canEdit" matInput placeholder="ex. 2527515609"
+                                                        formControlName="phone" required>
                                                 </mat-form-field>
                                                 <mat-error *ngIf="clientFormA.get('phone')!.hasError('required')">
                                                     Please Enter
@@ -223,8 +226,8 @@
                                                 <label class="label asterix--before">State </label>
                                                 <mat-form-field>
                                                     <mat-select formControlName="state" required>
-                                                        <mat-option [disabled]="canEdit"*ngFor="let option of stateList "
-                                                            [value]="option.value">
+                                                        <mat-option [disabled]="canEdit"
+                                                            *ngFor="let option of stateList " [value]="option.value">
                                                             {{option.type}}
                                                         </mat-option>
                                                     </mat-select>
@@ -259,9 +262,10 @@
                                             <div class="col-lg-3 col-md-12 mb-2">
                                                 <label class="label asterix--before">Please select</label>
                                                 <mat-form-field>
-                                                    <mat-select formControlName="isAustrallianResident" required (selectionChange)="clientFormAAustrallia($event.value)">
-                                                        <mat-option [disabled]="canEdit"*ngFor="let option of responseList "
-                                                            [value]="option.value">
+                                                    <mat-select formControlName="isAustrallianResident" required
+                                                        (selectionChange)="clientFormAAustrallia($event.value)">
+                                                        <mat-option [disabled]="canEdit"
+                                                            *ngFor="let option of responseList " [value]="option.value">
                                                             {{option.type}}
                                                         </mat-option>
                                                     </mat-select>
@@ -301,7 +305,8 @@
                                                             tax purposes?</label>
                                                         <mat-form-field>
                                                             <mat-select formControlName='isForeignTax'>
-                                                                <mat-option [disabled]="canEdit"*ngFor="let option of responseList "
+                                                                <mat-option [disabled]="canEdit"
+                                                                    *ngFor="let option of responseList "
                                                                     [value]="option.value">
                                                                     {{option.type}}
                                                                 </mat-option>
@@ -344,7 +349,8 @@
                                                             </label>
                                                             <mat-form-field>
                                                                 <mat-select formControlName='foreigntaxfieldResidency'>
-                                                                    <mat-option [disabled]="canEdit"*ngFor="let option of foreignTaxList "
+                                                                    <mat-option [disabled]="canEdit"
+                                                                        *ngFor="let option of foreignTaxList "
                                                                         [value]="option.type">
                                                                         {{option.type}}
                                                                     </mat-option>
@@ -373,7 +379,8 @@
                                                     <label class="label asterix--before">Please select</label>
                                                     <mat-form-field>
                                                         <mat-select formControlName="isPolitical" required>
-                                                            <mat-option [disabled]="canEdit"*ngFor="let option of responseList "
+                                                            <mat-option [disabled]="canEdit"
+                                                                *ngFor="let option of responseList "
                                                                 [value]="option.value">
                                                                 {{option.type}}
                                                             </mat-option>
@@ -402,8 +409,10 @@
                                                 <div>
                                                     <label class="label asterix--before">Please select</label>
                                                     <mat-form-field>
-                                                        <mat-select formControlName="soleTrader" required (selectionChange)="clientFormATrader($event.value)">
-                                                            <mat-option [disabled]="canEdit"*ngFor="let option of responseList "
+                                                        <mat-select formControlName="soleTrader" required
+                                                            (selectionChange)="clientFormATrader($event.value)">
+                                                            <mat-option [disabled]="canEdit"
+                                                                *ngFor="let option of responseList "
                                                                 [value]="option.value">
                                                                 {{option.type}}
                                                             </mat-option>
@@ -487,7 +496,8 @@
                                                     <mat-form-field>
 
                                                         <mat-select formControlName="soleTraderstate" required>
-                                                            <mat-option [disabled]="canEdit"*ngFor="let option of stateList "
+                                                            <mat-option [disabled]="canEdit"
+                                                                *ngFor="let option of stateList "
                                                                 [value]="option.value">
                                                                 {{option.type}}
                                                             </mat-option>
@@ -593,35 +603,41 @@
                                                                     Trustee</ng-template>
                                                                 <div class="row">
                                                                     <div class="section-inner">
-                                                                        <div *ngIf ="clientFormA.get('ispersonalprimary').value !='Y'">
-                                                                        <div *ngIf = "primaryIndex == undefined ? true : primaryIndex == i || showprimary "  class="col-lg-4 col-md-6 mb-2">
-                                                                            <label
-                                                                                class="label asterix--before">Are You The person for further correspondence?</label>
-                                                                           
-                                                                                
-                                                                                    <mat-radio-group aria-labelledby="example-radio-group-label"
-                                                                                    class="example-radio-group" (change)="isprimarychange($event.value,i )"
-                                                                                    formControlName="isjointprimary"  >
-                                                                                    <mat-radio-button *ngFor="let option of responseList "
-                                                                            [value]="option.value">
-                                                                            {{option.type}}
-                                                                        </mat-radio-button>
+                                                                        <div
+                                                                            *ngIf="clientFormA.get('ispersonalprimary').value !='Y'">
+                                                                            <div *ngIf="primaryIndex == undefined ? true : primaryIndex == i || showprimary "
+                                                                                class="col-lg-4 col-md-6 mb-2">
+                                                                                <label class="label asterix--before">Are
+                                                                                    You The person for further
+                                                                                    correspondence?</label>
+
+
+                                                                                <mat-radio-group
+                                                                                    aria-labelledby="example-radio-group-label"
+                                                                                    class="example-radio-group"
+                                                                                    (change)="isprimarychange($event.value,i )"
+                                                                                    formControlName="isjointprimary">
+                                                                                    <mat-radio-button
+                                                                                        *ngFor="let option of responseList "
+                                                                                        [value]="option.value">
+                                                                                        {{option.type}}
+                                                                                    </mat-radio-button>
                                                                                 </mat-radio-group>
-                                                                            
-                                                                            <mat-error
-                                                                                *ngIf="row?.controls?.isprimary?.errors?.required">
-                                                                                PLEASE SELECT</mat-error>
+
+                                                                                <mat-error
+                                                                                    *ngIf="row?.controls?.isprimary?.errors?.required">
+                                                                                    PLEASE SELECT</mat-error>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
                                                                         <div class="row">
-                                                                           
+
                                                                             <div class="col-lg-4 col-md-6 mb-2">
                                                                                 <label
                                                                                     class="label asterix--before">Title</label>
                                                                                 <mat-form-field>
                                                                                     <mat-select formControlName="title">
-                                                                                        <mat-option
-[disabled]="canEdit"                                                                                            *ngFor="let option of titleList "
+                                                                                        <mat-option [disabled]="canEdit"
+                                                                                            *ngFor="let option of titleList "
                                                                                             [value]="option.value">
                                                                                             {{option.type}}
                                                                                         </mat-option>
@@ -676,7 +692,7 @@
                                                                                     <input [readonly]="true" matInput
                                                                                         [matDatepicker]="picker"
                                                                                         formControlName="dob"
-                                                                                        [max]="maxDate" required >
+                                                                                        [max]="maxDate" required>
                                                                                     <mat-hint>MM/DD/YYYY</mat-hint>
                                                                                     <mat-datepicker-toggle matIconSuffix
                                                                                         [for]="picker"></mat-datepicker-toggle>
@@ -714,8 +730,7 @@
                                                                                     class="label asterix--before">Phone
                                                                                     number</label>
                                                                                 <mat-form-field>
-                                                                                    <input [readonly]="canEdit"
-                                                                                        matInput
+                                                                                    <input [readonly]="canEdit" matInput
                                                                                         placeholder="ex.987678567"
                                                                                         formControlName="phone" required
                                                                                         pattern='[0-9]{1}[0-9]{9}'>
@@ -798,8 +813,8 @@
                                                                                 <mat-form-field>
                                                                                     <mat-select formControlName="state"
                                                                                         required>
-                                                                                        <mat-option
-[disabled]="canEdit"                                                                                            *ngFor="let option of stateList "
+                                                                                        <mat-option [disabled]="canEdit"
+                                                                                            *ngFor="let option of stateList "
                                                                                             [value]="option.value">
                                                                                             {{option.type}}
                                                                                         </mat-option>
@@ -855,8 +870,8 @@
                                                                                     formControlName="isAustrallianResident"
                                                                                     (selectionChange)="onAustrallianResidentChange($event.value,i,'Individual-A')"
                                                                                     required>
-                                                                                    <mat-option
-[disabled]="canEdit"                                                                                        *ngFor="let option of responseList "
+                                                                                    <mat-option [disabled]="canEdit"
+                                                                                        *ngFor="let option of responseList "
                                                                                         [value]="option.value">
                                                                                         {{option.type}}
                                                                                     </mat-option>
@@ -886,7 +901,7 @@
                                                                                 <mat-error
                                                                                     *ngIf="row?.controls?.taxfieldY?.errors?.pattern ">
                                                                                     Exact 9 digits allowed </mat-error>
-                                                                                    <mat-error
+                                                                                <mat-error
                                                                                     *ngIf="row?.controls?.taxfieldY?.errors?.required ">
                                                                                     TFN is required </mat-error>
                                                                             </div>
@@ -897,7 +912,8 @@
                                                                             <div class="row w-100 gx-1">
                                                                                 <div class="col-lg-8 col-md-6 mb-2">
                                                                                     <label
-                                                                                        class="label asterix--before">Are you an foreign resident for
+                                                                                        class="label asterix--before">Are
+                                                                                        you an foreign resident for
                                                                                         tax purposes?</label>
                                                                                     <mat-form-field>
                                                                                         <mat-select
@@ -905,15 +921,16 @@
                                                                                             (selectionChange)="onjointholderTaxChange($event.value,i)"
                                                                                             required>
                                                                                             <mat-option
-[disabled]="canEdit"                                                                                                *ngFor="let option of responseList "
+                                                                                                [disabled]="canEdit"
+                                                                                                *ngFor="let option of responseList "
                                                                                                 [value]="option.value">
                                                                                                 {{option.type}}
                                                                                             </mat-option>
                                                                                         </mat-select>
                                                                                     </mat-form-field>
                                                                                     <mat-error
-                                                                                    *ngIf="row?.controls?.isForeignTax?.errors?.required ">
-                                                                                    Please select </mat-error>
+                                                                                        *ngIf="row?.controls?.isForeignTax?.errors?.required ">
+                                                                                        Please select </mat-error>
                                                                                 </div>
                                                                                 <div class="col-lg-4 col-md-4 mb-2"
                                                                                     *ngIf=" f1?.jointInvestor['controls'][i].controls.isForeignTax.value  =='Y'">
@@ -926,8 +943,8 @@
                                                                                             formControlName="foreigntaxfieldY">
                                                                                     </mat-form-field>
                                                                                     <mat-error
-                                                                                    *ngIf="row?.controls?.foreigntaxfieldY?.errors?.required ">
-                                                                                   Country is required </mat-error>
+                                                                                        *ngIf="row?.controls?.foreigntaxfieldY?.errors?.required ">
+                                                                                        Country is required </mat-error>
                                                                                 </div>
                                                                                 <div lass="col-lg-4 col-md-4"
                                                                                     *ngIf=" f1?.jointInvestor['controls'][i].controls.isForeignTax.value  =='Y'">
@@ -941,8 +958,8 @@
                                                                                             formControlName="foreigntaxfieldYTIN">
                                                                                     </mat-form-field>
                                                                                     <mat-error
-                                                                                    *ngIf="row?.controls?.foreigntaxfieldYTIN?.errors?.required ">
-                                                                                   TIN is required </mat-error>
+                                                                                        *ngIf="row?.controls?.foreigntaxfieldYTIN?.errors?.required ">
+                                                                                        TIN is required </mat-error>
                                                                                 </div>
                                                                                 <div class="col-lg-4 col-md-12 mb-2"
                                                                                     *ngIf=" f1?.jointInvestor['controls'][i].controls.isForeignTax.value =='N'">
@@ -958,15 +975,16 @@
                                                                                                 formControlName='foreigntaxfieldN'
                                                                                                 [required]=" f1?.jointInvestor['controls'][i].controls.isForeignTax.value =='N'">
                                                                                                 <mat-option
-[disabled]="canEdit"                                                                                                    *ngFor="let option of foreignTaxList "
+                                                                                                    [disabled]="canEdit"
+                                                                                                    *ngFor="let option of foreignTaxList "
                                                                                                     [value]="option.type">
                                                                                                     {{option.type}}
                                                                                                 </mat-option>
                                                                                             </mat-select>
                                                                                         </mat-form-field>
                                                                                         <mat-error
-                                                                                    *ngIf="row?.controls?.foreigntaxfieldN?.errors?.required ">
-                                                                                   Please select </mat-error>
+                                                                                            *ngIf="row?.controls?.foreigntaxfieldN?.errors?.required ">
+                                                                                            Please select </mat-error>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -994,8 +1012,8 @@
                                                                                 <mat-select
                                                                                     formControlName="isPolitical"
                                                                                     required>
-                                                                                    <mat-option
-[disabled]="canEdit"                                                                                        *ngFor="let option of responseList "
+                                                                                    <mat-option [disabled]="canEdit"
+                                                                                        *ngFor="let option of responseList "
                                                                                         [value]="option.value">
                                                                                         {{option.type}}
                                                                                     </mat-option>
@@ -1096,7 +1114,7 @@
 
                                                         <button class=" btn-style2" type="button" [hidden]='canEdit'
                                                             (click)="onaddJointHolderLevel($event)">Add Joint
-                                                           
+
                                                             Holder</button>
 
 
@@ -1156,10 +1174,10 @@
                                             </div>
 
                                             <div class="col-lg-4 col-md-6 mb-2">
-                                                <label >ABN, TFN, or TFN exemption </label>
+                                                <label>ABN, TFN, or TFN exemption </label>
                                                 <mat-form-field>
                                                     <input [readonly]="canEdit" matInput placeholder="Enter ABN "
-                                                        formControlName="companyABNname" >
+                                                        formControlName="companyABNname">
                                                 </mat-form-field>
                                                 <mat-error
                                                     *ngIf="clientCompany.get('companyABNname')!.hasError('required') ">
@@ -1222,8 +1240,8 @@
                                                 <label class="label asterix--before">State </label>
                                                 <mat-form-field>
                                                     <mat-select formControlName="state" required>
-                                                        <mat-option [disabled]="canEdit"*ngFor="let option of stateList "
-                                                            [value]="option.value">
+                                                        <mat-option [disabled]="canEdit"
+                                                            *ngFor="let option of stateList " [value]="option.value">
                                                             {{option.type}}
                                                         </mat-option>
                                                     </mat-select>
@@ -1566,7 +1584,7 @@
 
 
                                     </div>
-                                </div> 
+                                </div>
 
 
                             </form>
@@ -1583,40 +1601,45 @@
                                             <div [formGroupName]="i" style="margin-bottom: 10px;">
 
                                                 <div class="example-wrapper mb-3">
-                                                   
-                                                            <div class="mb-2">
-                                                                <div class="main-heading">
-                                                                    <h6 class="mb-0">Director: {{i
-                                                                        + 1}}</h6>
-                                                                </div>
-                                                            </div>
-                                                    <div class="row">
-                                                       <div >
-                                                        <div *ngIf = "primaryIndex == undefined ? true : primaryIndex == i || showprimary "  class="col-lg-4 col-md-6 mb-2">
-                                                            <label
-                                                                class="label asterix--before">Are you the person for further correspondence?</label>
-                                                           
-                                                                
-                                                                    <mat-radio-group aria-labelledby="example-radio-group-label"
-                                                                    class="example-radio-group" (change)="isprimarychange($event.value,i )"
-                                                                    formControlName="iscompanyprimary"  >
-                                                                    <mat-radio-button *ngFor="let option of responseList "
-                                                            [value]="option.value">
-                                                            {{option.type}}
-                                                        </mat-radio-button>
-                                                                </mat-radio-group>
-                                                            
-                                                            <mat-error
-                                                                *ngIf="row?.controls?.isprimary?.errors?.required">
-                                                                Please select</mat-error>
+
+                                                    <div class="mb-2">
+                                                        <div class="main-heading">
+                                                            <h6 class="mb-0">Director: {{i
+                                                                + 1}}</h6>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div>
+                                                            <div *ngIf="primaryIndex == undefined ? true : primaryIndex == i || showprimary "
+                                                                class="col-lg-4 col-md-6 mb-2">
+                                                                <label class="label asterix--before">Are you the person
+                                                                    for further correspondence?</label>
+
+
+                                                                <mat-radio-group
+                                                                    aria-labelledby="example-radio-group-label"
+                                                                    class="example-radio-group"
+                                                                    (change)="isprimarychange($event.value,i )"
+                                                                    formControlName="iscompanyprimary">
+                                                                    <mat-radio-button
+                                                                        *ngFor="let option of responseList "
+                                                                        [value]="option.value">
+                                                                        {{option.type}}
+                                                                    </mat-radio-button>
+                                                                </mat-radio-group>
+
+                                                                <mat-error
+                                                                    *ngIf="row?.controls?.isprimary?.errors?.required">
+                                                                    Please select</mat-error>
+                                                            </div>
+                                                        </div>
                                                         <div class="row">
                                                             <div class="col-lg-4 col-md-6 mb-2">
                                                                 <label class="label asterix--before">Title</label>
                                                                 <mat-form-field>
                                                                     <mat-select formControlName="title">
-                                                                        <mat-option [disabled]="canEdit"*ngFor="let option of titleList "
+                                                                        <mat-option [disabled]="canEdit"
+                                                                            *ngFor="let option of titleList "
                                                                             [value]="option.value">
                                                                             {{option.type}}
                                                                         </mat-option>
@@ -1677,7 +1700,7 @@
                                                                 <label class="label asterix--before">Phone
                                                                     number</label>
                                                                 <mat-form-field>
-                                                                    <input [readonly]="canEdit"  matInput
+                                                                    <input [readonly]="canEdit" matInput
                                                                         placeholder="ex.987678567"
                                                                         formControlName="phone" required
                                                                         pattern=[0-9]{1}[0-9]{9}>
@@ -1698,23 +1721,25 @@
 
                                                     </div>
 
-                                         <div *ngIf="this.clientIdForm.get('client_type').value !='Australian public company'">
-                                                    <button class="btn btn-danger" type="button"
-                                                        [hidden]='canEdit || i === 0'
-                                                        (click)="removeCompany(i)">Remove</button>
-                                                        <button class=" btn-style2" type="button" [hidden]='canEdit'
-                                                        (click)="onaddDirectorLevel($event)">Add Director
-                                                    </button>
-                                                    </div>
-                                                        <div *ngIf="this.clientIdForm.get('client_type').value =='Australian public company'">
+                                                    <div
+                                                        *ngIf="this.clientIdForm.get('client_type').value !='Australian public company'">
                                                         <button class="btn btn-danger" type="button"
-                                                        [hidden]='canEdit || i === 0 || i === 1 || i === 2'
-                                                        (click)="removeCompany(i)">Remove</button>
+                                                            [hidden]='canEdit || i === 0'
+                                                            (click)="removeCompany(i)">Remove</button>
                                                         <button class=" btn-style2" type="button" [hidden]='canEdit'
-                                                        (click)="onaddDirectorLevel($event)">Add Director
-                                                    </button>
+                                                            (click)="onaddDirectorLevel($event)">Add Director
+                                                        </button>
                                                     </div>
-                                                    
+                                                    <div
+                                                        *ngIf="this.clientIdForm.get('client_type').value =='Australian public company'">
+                                                        <button class="btn btn-danger" type="button"
+                                                            [hidden]='canEdit || i === 0 || i === 1 || i === 2'
+                                                            (click)="removeCompany(i)">Remove</button>
+                                                        <button class=" btn-style2" type="button" [hidden]='canEdit'
+                                                            (click)="onaddDirectorLevel($event)">Add Director
+                                                        </button>
+                                                    </div>
+
 
 
                                                 </div>
@@ -1852,7 +1877,8 @@
                                     </div>
                                 </div>
 
-                                <div *ngIf="this.clientIdForm.get('client_type').value !='Unregulated Corporate'&& this.clientIdForm.get('client_type').value !='Regulated Corporate'" class="">
+                                <div *ngIf="this.clientIdForm.get('client_type').value !='Unregulated Corporate'&& this.clientIdForm.get('client_type').value !='Regulated Corporate'"
+                                    class="">
                                     <div class="col-lg-12 col-md-12 my-3">
                                         <div class="main-heading">
                                             <h6 class="mb-0">Are you an Australian resident for tax purposes?
@@ -1868,7 +1894,8 @@
                                                         <mat-form-field>
                                                             <mat-select formControlName="isAustrallianResident"
                                                                 required>
-                                                                <mat-option [disabled]="canEdit"*ngFor="let option of responseList "
+                                                                <mat-option [disabled]="canEdit"
+                                                                    *ngFor="let option of responseList "
                                                                     [value]="option.value">
                                                                     {{option.type}}
                                                                 </mat-option>
@@ -1907,7 +1934,8 @@
                                                                     tax purposes?</label>
                                                                 <mat-form-field>
                                                                     <mat-select formControlName='isForeignTax'>
-                                                                        <mat-option [disabled]="canEdit"*ngFor="let option of responseList "
+                                                                        <mat-option [disabled]="canEdit"
+                                                                            *ngFor="let option of responseList "
                                                                             [value]="option.value">
                                                                             {{option.type}}
                                                                         </mat-option>
@@ -1942,8 +1970,8 @@
                                                                     </label>
                                                                     <mat-form-field>
                                                                         <mat-select formControlName='isForeignTaxN'>
-                                                                            <mat-option
-[disabled]="canEdit"                                                                                *ngFor="let option of foreignTaxList "
+                                                                            <mat-option [disabled]="canEdit"
+                                                                                *ngFor="let option of foreignTaxList "
                                                                                 [value]="option.type">
                                                                                 {{option.type}}
                                                                             </mat-option>
@@ -1958,7 +1986,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div *ngIf="this.clientIdForm.get('client_type').value !='Unregulated Corporate'&& this.clientIdForm.get('client_type').value !='Regulated Corporate'" class="mb-2">
+                                <div *ngIf="this.clientIdForm.get('client_type').value !='Unregulated Corporate'&& this.clientIdForm.get('client_type').value !='Regulated Corporate'"
+                                    class="mb-2">
                                     <div class="main-heading">
                                         <h6 class="mb-0">Please identify the source of your assets or wealth
                                             that are used
@@ -1968,7 +1997,8 @@
                                     </div>
                                 </div>
                                 <div class="">
-                                    <div *ngIf="this.clientIdForm.get('client_type').value !='Unregulated Corporate'&& this.clientIdForm.get('client_type').value !='Regulated Corporate'"class="section-inner">
+                                    <div *ngIf="this.clientIdForm.get('client_type').value !='Unregulated Corporate'&& this.clientIdForm.get('client_type').value !='Regulated Corporate'"
+                                        class="section-inner">
 
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 mb-2">
@@ -2024,7 +2054,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div *ngIf="this.clientIdForm.get('client_type').value !='Unregulated Corporate'&& this.clientIdForm.get('client_type').value !='Regulated Corporate'"class="">
+                                        <div *ngIf="this.clientIdForm.get('client_type').value !='Unregulated Corporate'&& this.clientIdForm.get('client_type').value !='Regulated Corporate'"
+                                            class="">
                                             <form [formGroup]="clientFormC">
                                                 <!-- <div class="mb-3">
                                                     <button class=" btn-style2" type="button" [hidden]='canEdit'
@@ -2047,33 +2078,37 @@
                                                                 </div>
                                                                 <div class="row">
 
-                                                                
-                                                                <div *ngIf = "primaryIndex == undefined ? true : primaryIndex == i || showprimary "  class="col-lg-4 col-md-6 mb-2">
-                                                                    <label
-                                                                        class="label asterix--before">Are you the person for further correspondence?</label>
-                                                                   
-                                                                        
-                                                                            <mat-radio-group aria-labelledby="example-radio-group-label"
-                                                                            class="example-radio-group" (change)="isprimarychange($event.value,i )"
-                                                                            formControlName="isprimary"  >
-                                                                            <mat-radio-button *ngFor="let option of responseList "
-                                                                    [value]="option.value">
-                                                                    {{option.type}}
-                                                                </mat-radio-button>
+
+                                                                    <div *ngIf="primaryIndex == undefined ? true : primaryIndex == i || showprimary "
+                                                                        class="col-lg-4 col-md-6 mb-2">
+                                                                        <label class="label asterix--before">Are you the
+                                                                            person for further correspondence?</label>
+
+
+                                                                        <mat-radio-group
+                                                                            aria-labelledby="example-radio-group-label"
+                                                                            class="example-radio-group"
+                                                                            (change)="isprimarychange($event.value,i )"
+                                                                            formControlName="isprimary">
+                                                                            <mat-radio-button
+                                                                                *ngFor="let option of responseList "
+                                                                                [value]="option.value">
+                                                                                {{option.type}}
+                                                                            </mat-radio-button>
                                                                         </mat-radio-group>
-                                                                    
-                                                                    <mat-error
-                                                                        *ngIf="row?.controls?.isprimary?.errors?.required">
-                                                                        Please select</mat-error>
-                                                                </div>
+
+                                                                        <mat-error
+                                                                            *ngIf="row?.controls?.isprimary?.errors?.required">
+                                                                            Please select</mat-error>
+                                                                    </div>
                                                                     <div class="row">
                                                                         <div class="col-lg-4 col-md-6 mb-2">
                                                                             <label
                                                                                 class="label asterix--before">Title</label>
                                                                             <mat-form-field>
                                                                                 <mat-select formControlName="title">
-                                                                                    <mat-option
-[disabled]="canEdit"                                                                                        *ngFor="let option of titleList "
+                                                                                    <mat-option [disabled]="canEdit"
+                                                                                        *ngFor="let option of titleList "
                                                                                         [value]="option.value">
                                                                                         {{option.type}}
                                                                                     </mat-option>
@@ -2124,18 +2159,18 @@
                                                                                 <input [readonly]="true" matInput
                                                                                     [matDatepicker]="picker"
                                                                                     formControlName="dob"
-                                                                                    [max]="maxDate" required >
+                                                                                    [max]="maxDate" required>
                                                                                 <mat-hint>MM/DD/YYYY</mat-hint>
                                                                                 <mat-datepicker-toggle matIconSuffix
                                                                                     [for]="picker"></mat-datepicker-toggle>
                                                                                 <mat-datepicker
                                                                                     #picker></mat-datepicker>
-                                                                               
+
                                                                             </mat-form-field>
                                                                             <mat-error
-                                                                            *ngIf="row?.controls?.dob?.errors?.required">
-                                                                            Date of birth is
-                                                                            required</mat-error>
+                                                                                *ngIf="row?.controls?.dob?.errors?.required">
+                                                                                Date of birth is
+                                                                                required</mat-error>
                                                                         </div>
                                                                         <div class="col-lg-4 col-md-6 mb-2">
                                                                             <label
@@ -2160,8 +2195,7 @@
                                                                             <label class="label asterix--before">Phone
                                                                                 number</label>
                                                                             <mat-form-field>
-                                                                                <input [readonly]="canEdit"
-                                                                                    matInput
+                                                                                <input [readonly]="canEdit" matInput
                                                                                     placeholder="ex.987678567"
                                                                                     formControlName="phone" required
                                                                                     pattern=[0-9]{1}[0-9]{9}>
@@ -2234,8 +2268,8 @@
                                                                                 class="label asterix--before">State</label>
                                                                             <mat-form-field>
                                                                                 <mat-select formControlName="state">
-                                                                                    <mat-option
-[disabled]="canEdit"                                                                                        *ngFor="let option of stateList "
+                                                                                    <mat-option [disabled]="canEdit"
+                                                                                        *ngFor="let option of stateList "
                                                                                         [value]="option.value">
                                                                                         {{option.type}}
                                                                                     </mat-option>
@@ -2408,18 +2442,18 @@
                                                                                     <mat-select
                                                                                         formControlName="isPolitical"
                                                                                         required>
-                                                                                        <mat-option
-[disabled]="canEdit"                                                                                            *ngFor="let option of responseList "
+                                                                                        <mat-option [disabled]="canEdit"
+                                                                                            *ngFor="let option of responseList "
                                                                                             [value]="option.value">
                                                                                             {{option.type}}
                                                                                         </mat-option>
                                                                                     </mat-select>
-                                                                                    
+
                                                                                 </mat-form-field>
                                                                                 <mat-error
-                                                                                *ngIf="row?.controls?.isPolitical?.errors?.required">
-                                                                                Please select
-                                                                            </mat-error>
+                                                                                    *ngIf="row?.controls?.isPolitical?.errors?.required">
+                                                                                    Please select
+                                                                                </mat-error>
                                                                             </div>
                                                                         </div>
                                                                         <!-- <div class="col-lg-12 col-md-12 my-3">
@@ -2489,7 +2523,7 @@
                                                                     </div>
 
                                                                 </div>
-                                                                
+
 
                                                                 <button class="btn btn-danger" type="button"
                                                                     [hidden]='canEdit || i === 0'
@@ -2502,9 +2536,9 @@
                                                                 </button>
 
                                                                 <button class=" btn-style2" type="button"
-                                                                [hidden]="clientFormC.get('Trustee').value.length > 1"
-                                                                (click)="onaddTrusteeLevel($event)">Add Trustee
-                                                            </button>
+                                                                    [hidden]="clientFormC.get('Trustee').value.length > 1"
+                                                                    (click)="onaddTrusteeLevel($event)">Add Trustee
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </ng-container>
@@ -2513,7 +2547,8 @@
                                             </form>
                                         </div>
 
-                                        <div *ngIf="this.clientIdForm.get('client_type').value !='Unregulated Corporate' || this.clientIdForm.get('client_type').value !='Regulated Corporate'">
+                                        <div
+                                            *ngIf="this.clientIdForm.get('client_type').value !='Unregulated Corporate' || this.clientIdForm.get('client_type').value !='Regulated Corporate'">
                                             <div class="row align-items-center k-justify-content-around">
                                                 <div class="col-lg-6 col-md-12">
                                                     <button class="btn w-btn style3 me-2" mat-button [hidden]="canEdit"
@@ -2550,11 +2585,10 @@
                                             Beneficial Ownership
                                         </span></ng-template>
 
-                                        <div class="mb-3">
-                                            <button [hidden]='canEdit' class=" btn-style2"
-                                                        (click)="onaddLevel($event)">Add
-                                                        Beneficial Owner</button>
-                                        </div>
+                                    <div class="mb-3">
+                                        <button [hidden]='canEdit' class=" btn-style2" (click)="onaddLevel($event)">Add
+                                            Beneficial Owner</button>
+                                    </div>
 
                                     <br />
                                     <div formArrayName="approvalMatrices">
@@ -2564,14 +2598,16 @@
                                             <div [formGroupName]="i" style="margin-bottom: 10px;">
 
                                                 <div class="example-wrapper mb-3">
-                                                    <label class=" label mr-2 mb-3" for="name"><strong>Beneficial Owner: {{i +
+                                                    <label class=" label mr-2 mb-3" for="name"><strong>Beneficial Owner:
+                                                            {{i +
                                                             1}}</strong></label>
                                                     <div class="row">
                                                         <div class="col-lg-4 col-md-6 mb-2">
                                                             <label class="label asterix--before">Title</label>
                                                             <mat-form-field>
                                                                 <mat-select formControlName="title">
-                                                                    <mat-option [disabled]="canEdit"*ngFor="let option of titleList "
+                                                                    <mat-option [disabled]="canEdit"
+                                                                        *ngFor="let option of titleList "
                                                                         [value]="option.value">
                                                                         {{option.type}}
                                                                     </mat-option>
@@ -2609,7 +2645,7 @@
                                                             <mat-error *ngIf="row?.controls?.surname?.errors?.required">
                                                                 Surname is required</mat-error>
                                                         </div>
-                                                         <div class="col-lg-4 col-md-6 mb-2">
+                                                        <div class="col-lg-4 col-md-6 mb-2">
                                                             <label class="label asterix--before">Date of birth
                                                                 (MM/DD/YYYY) </label>
                                                             <mat-form-field>
@@ -2624,7 +2660,7 @@
                                                             </mat-form-field>
                                                             <mat-error *ngIf="row?.controls?.dob?.errors?.required">
                                                                 Date of birth is required</mat-error>
-                                                        </div> 
+                                                        </div>
                                                         <div class="col-lg-4 col-md-6 mb-2">
                                                             <label class="label asterix--before">Email</label>
                                                             <mat-form-field>
@@ -2642,7 +2678,7 @@
                                                         <div class="col-lg-4 col-md-6 mb-2">
                                                             <label class="label asterix--before">Phone number</label>
                                                             <mat-form-field>
-                                                                <input [readonly]="canEdit"  matInput
+                                                                <input [readonly]="canEdit" matInput
                                                                     placeholder="EX.432456765" formControlName="phone"
                                                                     required pattern='[0-9]{1}[0-9]{9}'>
 
@@ -2693,26 +2729,25 @@
                                                                 <input [readonly]="canEdit" matInput
                                                                     placeholder="ex.Box Hill/Bella Vista"
                                                                     formControlName="suburb" required>
-                                                               
+
                                                             </mat-form-field>
-                                                            <mat-error
-                                                            *ngIf="row?.controls?.suburb?.errors?.required">
-                                                            Suburb is required</mat-error>
+                                                            <mat-error *ngIf="row?.controls?.suburb?.errors?.required">
+                                                                Suburb is required</mat-error>
                                                         </div>
                                                         <div class="col-lg-4 col-md-6 mb-2">
                                                             <label class="label asterix--before">State</label>
                                                             <mat-form-field>
                                                                 <mat-select formControlName="state">
-                                                                    <mat-option [disabled]="canEdit"*ngFor="let option of stateList "
+                                                                    <mat-option [disabled]="canEdit"
+                                                                        *ngFor="let option of stateList "
                                                                         [value]="option.value">
                                                                         {{option.type}}
                                                                     </mat-option>
                                                                 </mat-select>
-                                                               
+
                                                             </mat-form-field>
-                                                            <mat-error
-                                                            *ngIf="row?.controls?.state?.errors?.required">
-                                                            State is required</mat-error>
+                                                            <mat-error *ngIf="row?.controls?.state?.errors?.required">
+                                                                State is required</mat-error>
                                                         </div>
                                                         <div class="col-lg-4 col-md-6 mb-2">
                                                             <label class="label asterix--before">Postcode</label>
@@ -2747,18 +2782,18 @@
                                                                         <mat-select
                                                                             formControlName="isAustrallianResident"
                                                                             required>
-                                                                            <mat-option
-[disabled]="canEdit"                                                                                *ngFor="let option of responseList "
+                                                                            <mat-option [disabled]="canEdit"
+                                                                                *ngFor="let option of responseList "
                                                                                 [value]="option.value">
                                                                                 {{option.type}}
                                                                             </mat-option>
                                                                         </mat-select>
-                                                                        
+
                                                                     </mat-form-field>
                                                                     <mat-error
-                                                                            *ngIf="row?.controls?.isAustrallianResident?.errors?.required ">
-                                                                            Please select
-                                                                        </mat-error>
+                                                                        *ngIf="row?.controls?.isAustrallianResident?.errors?.required ">
+                                                                        Please select
+                                                                    </mat-error>
                                                                 </div>
                                                                 <div class="col-lg-8 col-md-12 mb-2"
                                                                     *ngIf=" row?.controls?.isAustrallianResident.value =='Y'">
@@ -2789,8 +2824,8 @@
                                                                             <mat-form-field>
                                                                                 <mat-select
                                                                                     formControlName='isForeignResident'>
-                                                                                    <mat-option
-[disabled]="canEdit"                                                                                        *ngFor="let option of responseList "
+                                                                                    <mat-option [disabled]="canEdit"
+                                                                                        *ngFor="let option of responseList "
                                                                                         [value]="option.value">
                                                                                         {{option.type}}
                                                                                     </mat-option>
@@ -2827,8 +2862,8 @@
                                                                                 <mat-form-field>
                                                                                     <mat-select
                                                                                         formControlName='isForeignTaxN'>
-                                                                                        <mat-option
-[disabled]="canEdit"                                                                                            *ngFor="let option of foreignTaxList "
+                                                                                        <mat-option [disabled]="canEdit"
+                                                                                            *ngFor="let option of foreignTaxList "
                                                                                             [value]="option.type">
                                                                                             {{option.type}}
                                                                                         </mat-option>
@@ -2851,7 +2886,8 @@
 
                                                                 <mat-form-field>
                                                                     <mat-select formControlName="ispolitical">
-                                                                        <mat-option [disabled]="canEdit"*ngFor="let option of responseList "
+                                                                        <mat-option [disabled]="canEdit"
+                                                                            *ngFor="let option of responseList "
                                                                             [value]="option.value">
                                                                             {{option.type}}
                                                                         </mat-option>
@@ -2889,14 +2925,16 @@
                                             <div [formGroupName]="i" style="margin-bottom: 10px;">
 
                                                 <div class="example-wrapper mb-3">
-                                                    <label class=" label mr-2" for="name"><strong> Decision Maker: {{i + 1}}
+                                                    <label class=" label mr-2" for="name"><strong> Decision Maker: {{i +
+                                                            1}}
                                                         </strong></label>
                                                     <div class="row">
                                                         <div class="col-lg-4 col-md-6 mb-2">
                                                             <label class="label asterix--before">Title</label>
                                                             <mat-form-field>
                                                                 <mat-select formControlName="title">
-                                                                    <mat-option [disabled]="canEdit"*ngFor="let option of titleList "
+                                                                    <mat-option [disabled]="canEdit"
+                                                                        *ngFor="let option of titleList "
                                                                         [value]="option.value">
                                                                         {{option.type}}
                                                                     </mat-option>
@@ -2936,7 +2974,7 @@
                                                             <mat-error *ngIf="row?.controls?.surname?.errors?.required">
                                                                 Surname is required</mat-error>
                                                         </div>
-                                                         <div class="col-lg-4 col-md-6 mb-2">
+                                                        <div class="col-lg-4 col-md-6 mb-2">
                                                             <label class="label asterix--before">Date of birth
                                                                 (MM/DD/YYYY)</label>
                                                             <mat-form-field>
@@ -2947,11 +2985,11 @@
                                                                 <mat-datepicker-toggle matIconSuffix
                                                                     [for]="picker"></mat-datepicker-toggle>
                                                                 <mat-datepicker #picker></mat-datepicker>
-                                                               
+
                                                             </mat-form-field>
                                                             <mat-error *ngIf="row?.controls?.dob?.errors?.required">
                                                                 Date of birth is required</mat-error>
-                                                        </div> 
+                                                        </div>
                                                         <div class="col-lg-4 col-md-6 mb-2">
                                                             <label class="label asterix--before">Email</label>
                                                             <mat-form-field>
@@ -2969,7 +3007,7 @@
                                                         <div class="col-lg-4 col-md-6 mb-2">
                                                             <label class="label asterix--before">Phone number</label>
                                                             <mat-form-field>
-                                                                <input [readonly]="canEdit"  matInput
+                                                                <input [readonly]="canEdit" matInput
                                                                     placeholder="ex.987678567" formControlName="phone"
                                                                     required pattern='[0-9]{1}[0-9]{9}'>
 
@@ -3029,7 +3067,8 @@
                                                             <label class="label asterix--before">State</label>
                                                             <mat-form-field>
                                                                 <mat-select formControlName="state">
-                                                                    <mat-option [disabled]="canEdit"*ngFor="let option of stateList "
+                                                                    <mat-option [disabled]="canEdit"
+                                                                        *ngFor="let option of stateList "
                                                                         [value]="option.value">
                                                                         {{option.type}}
                                                                     </mat-option>
@@ -3070,8 +3109,8 @@
                                                                         <mat-select
                                                                             formControlName="isAustrallianResident"
                                                                             required>
-                                                                            <mat-option
-[disabled]="canEdit"                                                                                *ngFor="let option of responseList "
+                                                                            <mat-option [disabled]="canEdit"
+                                                                                *ngFor="let option of responseList "
                                                                                 [value]="option.value">
                                                                                 {{option.type}}
                                                                             </mat-option>
@@ -3112,8 +3151,8 @@
                                                                             <mat-form-field>
                                                                                 <mat-select
                                                                                     formControlName='isForeignResident'>
-                                                                                    <mat-option
-[disabled]="canEdit"                                                                                        *ngFor="let option of responseList "
+                                                                                    <mat-option [disabled]="canEdit"
+                                                                                        *ngFor="let option of responseList "
                                                                                         [value]="option.value">
                                                                                         {{option.type}}
                                                                                     </mat-option>
@@ -3150,8 +3189,8 @@
                                                                                 <mat-form-field>
                                                                                     <mat-select
                                                                                         formControlName='isForeignTaxN'>
-                                                                                        <mat-option
-[disabled]="canEdit"                                                                                            *ngFor="let option of foreignTaxList "
+                                                                                        <mat-option [disabled]="canEdit"
+                                                                                            *ngFor="let option of foreignTaxList "
                                                                                             [value]="option.type">
                                                                                             {{option.type}}
                                                                                         </mat-option>
@@ -3173,7 +3212,8 @@
 
                                                             <mat-form-field class="example-full-width">
                                                                 <mat-select formControlName="ispolitical">
-                                                                    <mat-option [disabled]="canEdit"*ngFor="let option of responseList "
+                                                                    <mat-option [disabled]="canEdit"
+                                                                        *ngFor="let option of responseList "
                                                                         [value]="option.value">
                                                                         {{option.type}}
                                                                     </mat-option>
@@ -3187,7 +3227,7 @@
                                                     <button class="btn btn-danger" type="button" [hidden]='canEdit'
                                                         (click)="removeDecisionMakerItem(i)">Remove</button>
 
-                                                        <button [hidden]='canEdit' class=" btn-style2" type="button"
+                                                    <button [hidden]='canEdit' class=" btn-style2" type="button"
                                                         (click)="onaddDecisionMakerLevel($event)">Add
                                                         Decision Maker</button>
                                                 </div>
@@ -3197,8 +3237,9 @@
                                 </form>
                                 <div class="row align-items-center k-justify-content-around">
                                     <div class="col-lg-6 col-md-12">
-                                        <button class="btn w-btn btn-style4 me-2" style="background-color:aqua !important"matStepperPrevious> <span
-                                            class="fa-solid fa-arrow-left"></span>  Back</button>
+                                        <button class="btn w-btn btn-style4 me-2"
+                                            style="background-color:aqua !important" matStepperPrevious> <span
+                                                class="fa-solid fa-arrow-left"></span> Back</button>
                                         <button class="btn w-btn style3 me-2" mat-button [hidden]="canEdit"
                                             (click)="clientFormD.reset()">Reset
                                         </button>
@@ -3234,8 +3275,8 @@
                                         <div class="col-lg-4 col-md-12">
                                             <mat-form-field class="example-full-width">
                                                 <mat-select formControlName="income_distributions">
-                                                    <mat-option [disabled]="canEdit"*ngFor="let option of responseList "
-                                                        [value]="option.value">
+                                                    <mat-option [disabled]="canEdit"
+                                                        *ngFor="let option of responseList " [value]="option.value">
                                                         {{option.type}}
                                                     </mat-option>
                                                 </mat-select>
@@ -3251,7 +3292,8 @@
                                 </div>
                                 <hr />
                                 <div class="section-inner my-3">
-                                    <p class="main-paragraph mb-5" style="color:black">Please complete your bank account details below.
+                                    <p class="main-paragraph mb-5" style="color:black">Please complete your bank account
+                                        details below.
                                         Please
                                         note the account must be held
                                         in
@@ -3295,9 +3337,8 @@
                                         <div class="col-lg-4 col-md-6 mb-2">
                                             <label class="label asterix--before"> BSB </label>
                                             <mat-form-field>
-                                                <input [readonly]="canEdit" matInput 
-                                                    placeholder="Enter BSB" formControlName="BSB"
-                                                    pattern="[0-9]{1}[0-9]{5}"   required>
+                                                <input [readonly]="canEdit" matInput placeholder="Enter BSB"
+                                                    formControlName="BSB" pattern="[0-9]{1}[0-9]{5}" required>
 
                                             </mat-form-field>
                                             <mat-error *ngIf="clientGeneralDetails.get('BSB')?.hasError('required') ">
@@ -3305,12 +3346,12 @@
                                             </mat-error>
                                             <mat-error *ngIf="clientGeneralDetails.get('BSB')?.hasError('pattern') ">
                                                 BSB should be of 6 digits & only number allowed </mat-error>
-                                               
+
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-2">
                                             <label class="label asterix--before"> Account number </label>
                                             <mat-form-field>
-                                                <input [readonly]="canEdit"  matInput
+                                                <input [readonly]="canEdit" matInput
                                                     placeholder="Enter your account number"
                                                     formControlName="Account_number" required pattern="[0-9]+">
 
@@ -3321,10 +3362,10 @@
 
                                             </mat-error>
                                             <mat-error
-                                            *ngIf="clientGeneralDetails.get('Account_number')?.hasError('pattern') ">
-                                            Account number should contain only digits
+                                                *ngIf="clientGeneralDetails.get('Account_number')?.hasError('pattern') ">
+                                                Account number should contain only digits
 
-                                        </mat-error>
+                                            </mat-error>
                                         </div>
                                     </div>
 
@@ -3334,8 +3375,8 @@
                         <div class="section-inner">
                             <div class="row align-items-center k-justify-content-around">
                                 <div class="col-lg-6 col-md-12">
-                                    <button class="btn w-btn btn-style4 me-2" style="background-color:aqua !important"matStepperPrevious> <span
-                                        class="fa-solid fa-arrow-left"></span>  Back</button>
+                                    <button class="btn w-btn btn-style4 me-2" style="background-color:aqua !important"
+                                        matStepperPrevious> <span class="fa-solid fa-arrow-left"></span> Back</button>
                                     <button class="btn w-btn style3 me-2" mat-button [hidden]="canEdit"
                                         (click)="clientGeneralDetails.reset()">Reset
                                     </button>
@@ -3369,8 +3410,9 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 my-3">
                                         <div class="section-inner">
-                                            <h6  class=" label mb-0">Regulated Trusts Provide a copy of one identification  document
-                                               
+                                            <h6 class=" label mb-0">Regulated Trusts Provide a copy of one
+                                                identification document
+
                                             </h6>
                                         </div>
                                     </div>
@@ -3400,7 +3442,8 @@
                                         </div>
 
                                         <div *ngIf="formValue?.form_f?.trust_files != null && this.showregulated_FR  ">
-                                            <a href='{{imageUrl}}{{clientNumber}}{{formValue?.form_f?.trust_files}}' target="_blank">
+                                            <a href='{{imageUrl}}{{clientNumber}}{{formValue?.form_f?.trust_files}}'
+                                                target="_blank">
                                                 view previous Uploaded document</a>
                                         </div>
 
@@ -3408,8 +3451,7 @@
 
 
                                 </div>
-                                <div
-                                    *ngIf="clientIdForm.get('client_type').value =='Individual' ">
+                                <div *ngIf="clientIdForm.get('client_type').value =='Individual' ">
 
 
 
@@ -3424,10 +3466,16 @@
                                                     <div class="col-lg-12 col-md-12 my-3">
                                                         <div class="main-heading">
                                                             <h6 class="mb-0"><strong>
-                                                                <span style="color:#fff">
-                                                                Individual Identification Applicant {{i +1}} : {{ i ==0 ? clientFormA.get('givennames').value + " " + clientFormA.get('surname').value : (f1?.jointInvestor['controls'][i - 1]?.controls?.givennames.value + " " + f1?.jointInvestor['controls'][i - 1]?.controls?.surname.value)}}
-                                                            </span>
-                                                                    </strong>
+                                                                    <span style="color:#fff">
+                                                                        Individual Identification Applicant {{i +1}} :
+                                                                        {{ i ==0 ? clientFormA.get('givennames').value +
+                                                                        " " + clientFormA.get('surname').value :
+                                                                        (f1?.jointInvestor['controls'][i -
+                                                                        1]?.controls?.givennames.value + " " +
+                                                                        f1?.jointInvestor['controls'][i -
+                                                                        1]?.controls?.surname.value)}}
+                                                                    </span>
+                                                                </strong>
                                                             </h6>
                                                         </div>
                                                     </div>
@@ -3443,8 +3491,8 @@
                                                                     <mat-select
                                                                         (selectionChange)="onIndividualChange($event.value,i)"
                                                                         formControlName='individual' required>
-                                                                        <mat-option
-[disabled]="canEdit"                                                                            *ngFor="let option of individualIdentificationList "
+                                                                        <mat-option [disabled]="canEdit"
+                                                                            *ngFor="let option of individualIdentificationList "
                                                                             [value]="option.value">
                                                                             {{option.type}}
                                                                         </mat-option>
@@ -3463,8 +3511,8 @@
                                                                         <mat-form-field class="example-full-width">
                                                                             <mat-select
                                                                                 formControlName="individual_1_doc">
-                                                                                <mat-option
-[disabled]="canEdit"                                                                                    *ngFor="let option of verificationList "
+                                                                                <mat-option [disabled]="canEdit"
+                                                                                    *ngFor="let option of verificationList "
                                                                                     [value]="option.verificationType">
                                                                                     {{option.verificationType}}
                                                                                 </mat-option>
@@ -3519,8 +3567,8 @@
                                                                             <mat-select
                                                                                 formControlName="individual_2_categoryA_doc">
 
-                                                                                <mat-option
-[disabled]="canEdit"                                                                                    *ngFor="let option of individualVerificationA "
+                                                                                <mat-option [disabled]="canEdit"
+                                                                                    *ngFor="let option of individualVerificationA "
                                                                                     [value]="option.type">
                                                                                     {{option.type}}
                                                                                 </mat-option>
@@ -3560,8 +3608,8 @@
                                                                         <mat-form-field class="example-full-width">
                                                                             <mat-select
                                                                                 formControlName="individual_2_categoryB_doc">
-                                                                                <mat-option
-[disabled]="canEdit"                                                                                    *ngFor="let option of individualVerificationB "
+                                                                                <mat-option [disabled]="canEdit"
+                                                                                    *ngFor="let option of individualVerificationB "
                                                                                     [value]="option.type">
                                                                                     {{option.type}}
                                                                                 </mat-option>
@@ -3601,8 +3649,7 @@
                                     </div>
                                 </div>
 
-                                <div
-                                    *ngIf="clientIdForm.get('client_type').value =='Company'">
+                                <div *ngIf="clientIdForm.get('client_type').value =='Company'">
 
                                     <div class="col-lg-12 col-md-12 my-3">
                                         <div class="main-heading">
@@ -3612,7 +3659,8 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 my-3">
                                         <div class="section-inner">
-                                            <h6 class="label mb-0">In respect of a private domestic company please provide a
+                                            <h6 class="label mb-0">In respect of a private domestic company please
+                                                provide a
                                                 copy of one identification document
                                             </h6>
                                         </div>
@@ -3641,16 +3689,18 @@
 
                                         </div>
 
-                                        <div *ngIf="formValue?.form_f?.company_verification_domestic != null  &&  showprivate">
+                                        <div
+                                            *ngIf="formValue?.form_f?.company_verification_domestic != null  &&  showprivate">
                                             <a href='{{imageUrl}}{{clientNumber}}{{formValue?.form_f?.company_verification_domestic}}'
                                                 target="_blank">
                                                 view previous uploaded document</a>
                                         </div>
 
                                     </div>
-                                   
+
                                 </div>
-                                <div *ngIf="clientIdForm.get('client_type').value =='Australian public company' "class="section-inner my-3">
+                                <div *ngIf="clientIdForm.get('client_type').value =='Australian public company' "
+                                    class="section-inner my-3">
 
                                     <div class="col-lg-12 col-md-12 my-3">
                                         <div class="main-heading">
@@ -3660,7 +3710,8 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 my-3">
                                         <div class="section-inner">
-                                            <h6 class="label mb-0">In respect of a domestic listed company or its majority
+                                            <h6 class="label mb-0">In respect of a domestic listed company or its
+                                                majority
                                                 owned subsidiary and a company licensed and subject to the
                                                 regulatory oversight of a Commonwealth or State regulator please
                                                 provide a copy of one identification document
@@ -3676,8 +3727,7 @@
 
 
                                         <mat-radio-group aria-labelledby="example-radio-group-label"
-                                            class="example-radio-group"
-                                            (change)="onCompanyddChange($event,'domestic')"
+                                            class="example-radio-group" (change)="onCompanyddChange($event,'domestic')"
                                             formControlName="DomesticCompany" required>
                                             <mat-radio-button class="example-radio-button"
                                                 *ngFor="let option of domesticCompany " [value]="option.Value">
@@ -3743,7 +3793,8 @@
                                         </div>
 
                                         <div *ngIf="formValue?.form_f?.trust_files != null && showregulatedC_FR">
-                                            <a href='{{imageUrl}}{{clientNumber}}{{formValue?.form_f?.trust_files}}' target="_blank">
+                                            <a href='{{imageUrl}}{{clientNumber}}{{formValue?.form_f?.trust_files}}'
+                                                target="_blank">
                                                 view previous uploaded document</a>
                                         </div>
 
@@ -3761,7 +3812,8 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 my-3">
                                         <div class="section-inner">
-                                            <h6 class="label mb-0">UnRegulated Trusts provide a copy of one identification
+                                            <h6 class="label mb-0">UnRegulated Trusts provide a copy of one
+                                                identification
                                                 document
                                             </h6>
                                         </div>
@@ -3791,8 +3843,10 @@
 
                                         </div>
 
-                                        <div *ngIf="formValue?.form_f?.trust_files_unregulated != null &&  showUnregulatedC_UR ">
-                                            <a href='{{imageUrl}}{{clientNumber}}{{formValue?.form_f?.trust_files_unregulated}}' target="_blank">
+                                        <div
+                                            *ngIf="formValue?.form_f?.trust_files_unregulated != null &&  showUnregulatedC_UR ">
+                                            <a href='{{imageUrl}}{{clientNumber}}{{formValue?.form_f?.trust_files_unregulated}}'
+                                                target="_blank">
                                                 view previous uploaded document</a>
                                         </div>
 
@@ -3811,7 +3865,8 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 my-3">
                                         <div class="section-inner">
-                                            <h6 class="label mb-0">Unregulated Trusts provide an original certified copy of
+                                            <h6 class="label mb-0">Unregulated Trusts provide an original certified copy
+                                                of
                                                 one identification document
                                             </h6>
                                         </div>
@@ -3837,7 +3892,8 @@
                                                 [restrictions]="myRestrictions">
                                             </kendo-fileselect>
                                         </div>
-                                        <div *ngIf="formValue?.form_f?.trust_files_unregulated != null && showUnregulated_UR">
+                                        <div
+                                            *ngIf="formValue?.form_f?.trust_files_unregulated != null && showUnregulated_UR">
 
                                             <a href='{{imageUrl}}{{clientNumber}}{{formValue?.form_f?.trust_files_unregulated}}'
                                                 target="_blank">
@@ -3850,8 +3906,9 @@
                                 <div class="section-inner">
                                     <div class="row align-items-center k-justify-content-around">
                                         <div class="col-lg-6 col-md-12">
-                                            <button class="btn w-btn btn-style4 me-2" style="background-color:aqua !important"matStepperPrevious> <span
-                                                class="fa-solid fa-arrow-left"></span>  Back</button>
+                                            <button class="btn w-btn btn-style4 me-2"
+                                                style="background-color:aqua !important" matStepperPrevious> <span
+                                                    class="fa-solid fa-arrow-left"></span> Back</button>
                                             <button [hidden]="canEdit" class="btn w-btn btn-style1" mat-button
                                                 (click)="onSaveDraft()">Save
                                                 Draft</button>
@@ -3868,63 +3925,93 @@
 
                     <mat-step [stepControl]="clientDeclaration" label="Declaration" errorMessage="Form is not Valid.">
                         <div class="list-items mb-5" style="color:black">
-                         
+
                             <ul class="list-menu">
-                                <h4>I/We declare and/or acknowledge and agree that:</h4>  
-                                <li>I/we have received this Application Form attached to, or accompanied by, the PDS and SPDS; </li>
-                                <li>I/we have read the PDS and SPDS, and have received and accepted the offer in it in Australia;
+                                <h4>I/We declare and/or acknowledge and agree that:</h4>
+                                <li>I/we have received this Application Form attached to, or accompanied by, the PDS and
+                                    SPDS; </li>
+                                <li>I/we have read the PDS and SPDS, and have received and accepted the offer in it in
+                                    Australia;
                                 </li>
                                 <li>
-                                    I/we have read the FSG, TMD and Brochure and have received and accepted the offer in it in Australia;
+                                    I/we have read the FSG, TMD and Brochure and have received and accepted the offer in
+                                    it in Australia;
                                 </li>
-                                <li>if I/we do not provide all or part of the information required by the Application Form, the Responsible Entity will not be able
+                                <li>if I/we do not provide all or part of the information required by the Application
+                                    Form, the Responsible Entity will not be able
                                     to accept my/our application and I/we will not be able to acquire units;
-                                     </li>
-                                <li>I/we are bound by the provisions of the Constitution of the Fund as amended from time to time;</li>
+                                </li>
+                                <li>I/we are bound by the provisions of the Constitution of the Fund as amended from
+                                    time to time;</li>
                                 <li>I/we have legal power to invest; </li>
-                                <li>I/we represent and warrant that I/we am/are a wholesale client within the meaning of section 761G of the Corporations Act
+                                <li>I/we represent and warrant that I/we am/are a wholesale client within the meaning of
+                                    section 761G of the Corporations Act
                                     2001 (Cth);
-                                     </li>
-                                <li>my/our application is not a result of an unsolicited meeting with or telephone call from another person</li>
+                                </li>
+                                <li>my/our application is not a result of an unsolicited meeting with or telephone call
+                                    from another person</li>
                                 <li>I/we understand the risks of subscribing for the units; </li>
-                                <li>I/we understand that an investment in the Fund is subject to investment risks including possible delays in repayment and
+                                <li>I/we understand that an investment in the Fund is subject to investment risks
+                                    including possible delays in repayment and
                                     possible loss of income or capital invested;
-                                     </li>
-                                <li> an investment in the Fund or the acquisition of units does not represent an investment in or a deposit or other liability of the
+                                </li>
+                                <li> an investment in the Fund or the acquisition of units does not represent an
+                                    investment in or a deposit or other liability of the
                                     Responsible Entity or its related entities;
-                                     </li>
-                                <li>I/we have relied on my/our own independent investigation, enquiries and appraisals, and have obtained or have had the
-                                    opportunity to obtain legal, accounting, tax and financial advice, in connection with the Fund before deciding to subscribe
+                                </li>
+                                <li>I/we have relied on my/our own independent investigation, enquiries and appraisals,
+                                    and have obtained or have had the
+                                    opportunity to obtain legal, accounting, tax and financial advice, in connection
+                                    with the Fund before deciding to subscribe
                                     for units; </li>
-                                <li>I/we have all regulatory approvals required in Australia and any other relevant jurisdiction to hold units and become a unit
+                                <li>I/we have all regulatory approvals required in Australia and any other relevant
+                                    jurisdiction to hold units and become a unit
                                     holder of the Fund; </li>
-                                <li>the Responsible Entity may be required to collect and verify certain information from me/us to facilitate the Responsible
-                                    Entity’s compliance with Australian anti-money laundering and counter-terrorism financing legislation, and that under this
-                                    legislation the Responsible Entity may be required to conduct on-going customer due diligence in respect of, and collect
-                                    further information in relation to, me/us whilst I/we am/are a unit holder of the Fund;
-                                     </li>
-                                <li>if this Application Form is signed under power of attorney, I/we have no knowledge of the revocation of that power of
+                                <li>the Responsible Entity may be required to collect and verify certain information
+                                    from me/us to facilitate the Responsible
+                                    Entity’s compliance with Australian anti-money laundering and counter-terrorism
+                                    financing legislation, and that under this
+                                    legislation the Responsible Entity may be required to conduct on-going customer due
+                                    diligence in respect of, and collect
+                                    further information in relation to, me/us whilst I/we am/are a unit holder of the
+                                    Fund;
+                                </li>
+                                <li>if this Application Form is signed under power of attorney, I/we have no knowledge
+                                    of the revocation of that power of
                                     attorney;
-                                    
-                                     </li>
-                                <li>if this is a joint application, each of us is able to operate our investment in the Fund and is able to bind the other(s) to any
-                                    transaction including investments, switches or withdrawals by any available method;</li>
-                                    <li> my/our personal information will be collected, used and disclosed on terms described in the PDS and SPDS;
-                                    </li>
-                                        <li>I/we authorise the Responsible Entity to give information relating to my/our account and investment in that account to
-                                            my/our adviser;
-                                             </li>
-                                            <li>I/we will provide the Responsible Entity or its nominees any information that the Responsible Entity reasonably requires in
-                                                order to enable the Responsible Entity to meet its compliance, reporting and other obligations under the USA’s Foreign
-                                                Account Tax Compliance Act and all associated rules and regulations from time to time (including, without limitation, the
-                                                Inter-Governmental Agreement (IGA) entered into between the governments of the USA and Australia), and that the
-                                                Responsible Entity or its agents may disclose such information to the Australian Taxation Office who may in turn disclose
-                                                the information to the Internal Revenue Service of the USA; and </li>
-                                                <li>if I/we have provided us or our nominee with information about my/our status or designation under or for the purposes of
-                                                    FATCA (including, but without limitation, USA residency or citizenship status and FATCA status as a particular entity type)
-                                                    and all associated rules and regulations, such information is true and correct and the Responsible Entity will treat such
-                                                    information as true and correct without any additional validation or confirmation being undertaken by the Responsible Entity
-                                                    except where it has a legal obligation to do so. </li>
+
+                                </li>
+                                <li>if this is a joint application, each of us is able to operate our investment in the
+                                    Fund and is able to bind the other(s) to any
+                                    transaction including investments, switches or withdrawals by any available method;
+                                </li>
+                                <li> my/our personal information will be collected, used and disclosed on terms
+                                    described in the PDS and SPDS;
+                                </li>
+                                <li>I/we authorise the Responsible Entity to give information relating to my/our account
+                                    and investment in that account to
+                                    my/our adviser;
+                                </li>
+                                <li>I/we will provide the Responsible Entity or its nominees any information that the
+                                    Responsible Entity reasonably requires in
+                                    order to enable the Responsible Entity to meet its compliance, reporting and other
+                                    obligations under the USA’s Foreign
+                                    Account Tax Compliance Act and all associated rules and regulations from time to
+                                    time (including, without limitation, the
+                                    Inter-Governmental Agreement (IGA) entered into between the governments of the USA
+                                    and Australia), and that the
+                                    Responsible Entity or its agents may disclose such information to the Australian
+                                    Taxation Office who may in turn disclose
+                                    the information to the Internal Revenue Service of the USA; and </li>
+                                <li>if I/we have provided us or our nominee with information about my/our status or
+                                    designation under or for the purposes of
+                                    FATCA (including, but without limitation, USA residency or citizenship status and
+                                    FATCA status as a particular entity type)
+                                    and all associated rules and regulations, such information is true and correct and
+                                    the Responsible Entity will treat such
+                                    information as true and correct without any additional validation or confirmation
+                                    being undertaken by the Responsible Entity
+                                    except where it has a legal obligation to do so. </li>
 
                             </ul>
                         </div>
@@ -3940,14 +4027,15 @@
                                         <div [formGroupName]="i">
                                             <div class="section-inner my-3">
                                                 <div class="example-wrapper mb-3">
-                                                    <label class="mr-2" for="name"><span style="color:black">Signature: {{i + 1}}</span>
-                                                            
+                                                    <label class="mr-2" for="name"><span style="color:black">Signature:
+                                                            {{i + 1}}</span>
+
                                                     </label>
                                                     <div>
                                                         <div class="row gx-1 align-content-center mb-2">
                                                             <div class="col-lg-4 col-md-6 mb-3">
-                                                                
-                                                                
+
+
                                                                 <kendo-signature #signature
                                                                     formControlName="signaturefilename" [popupScale]="2"
                                                                     required></kendo-signature>
@@ -3964,18 +4052,21 @@
                                                                         required readonly>
                                                                 </mat-form-field>
                                                             </div>
-                                                            <div class="col-lg-4 col-md-6 mb-2" *ngIf="this.clientIdForm.get('client_type').value !='Individual'">
+                                                            <div class="col-lg-4 col-md-6 mb-2"
+                                                                *ngIf="this.clientIdForm.get('client_type').value !='Individual'">
                                                                 <label class="label asterix--before">Designation</label>
                                                                 <mat-form-field>
-                                                                   
-                                                                        <mat-select 
-                                                                        formControlName="designation" required>
-                                                                        <mat-option [disabled]="canEdit"*ngFor="let option of designation " [value]="option.Value">
+
+                                                                    <mat-select formControlName="designation" required>
+                                                                        <mat-option [disabled]="canEdit"
+                                                                            *ngFor="let option of designation "
+                                                                            [value]="option.Value">
                                                                             {{option.type}}
                                                                         </mat-option>
                                                                     </mat-select>
                                                                 </mat-form-field>
-                                                                <mat-error *ngIf="row?.controls?.designation?.errors?.required ">
+                                                                <mat-error
+                                                                    *ngIf="row?.controls?.designation?.errors?.required ">
                                                                     Please
                                                                     select
                                                                     designation
@@ -4005,16 +4096,18 @@
                                 <div class="section-inner">
                                     <div class="row align-items-center k-justify-content-around">
                                         <div class="col-lg-6 col-md-12">
-                                           
-                                            <button class="btn w-btn btn-style4 me-2" style="background-color:aqua !important"matStepperPrevious> <span
-                                                class="fa-solid fa-arrow-left"></span>  Back</button>
+
+                                            <button class="btn w-btn btn-style4 me-2"
+                                                style="background-color:aqua !important" matStepperPrevious> <span
+                                                    class="fa-solid fa-arrow-left"></span> Back</button>
                                             <button [hidden]="canEdit" class="btn w-btn btn-style1" mat-button
                                                 (click)="onSaveDraft()">Save
                                                 Draft</button>
-                                                <button [hidden]="canEdit" class="btn btn-success" (click)="onSubmit()">Submit</button>
+                                            <button [hidden]="canEdit" class="btn btn-success"
+                                                (click)="onSubmit()">Submit</button>
                                         </div>
                                         <div class="col-lg-6 col-md-12 text-end">
-                                           
+
                                         </div>
                                     </div>
                                 </div>
