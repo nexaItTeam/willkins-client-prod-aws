@@ -267,7 +267,7 @@ export class OrderComponent implements OnInit {
         if ( row.paidStatus == 4) {
           this.viewCerticate(row)
         } else {
-          alert('Unit Certificate can be downloaded after installment are paid')
+          alert('Unit Certificate can be downloaded after payment are done/settled.')
         }
         break;
     }
