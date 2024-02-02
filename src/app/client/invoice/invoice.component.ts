@@ -19,6 +19,7 @@ export class InvoiceComponent {
   public installmentAmount:number
   public prop_type : string
   public ARSN:string
+  public Account_number:any
 constructor(public _commonService:CommonService,public router:Router,private location: Location){
   
 this.invoiceInfo=this._commonService.invoiceData
@@ -28,6 +29,7 @@ this.installmentAmount = this.invoiceInfo[0].enq_prop_data?.first_installment_pr
 this.index =this.invoiceInfo[0].enq_form_data?.primary_index
 this.prop_type = this.invoiceInfo[0].enq_prop_data.prop_type == 3 ? "Wellkins Mortgage Fund" : "Wellkins Capital Fund"
 this.ARSN = this.invoiceInfo[0].enq_prop_data.prop_type == 3 ? '673 559 576' : '614 577 276'
+this.Account_number = this.invoiceInfo[0].enq_prop_data.prop_type == 3 ? '900113297' : '899882071'
 this.getUserDetail()
 }
   @ViewChild('dataToExport', { static: false }) public dataToExport: ElementRef;

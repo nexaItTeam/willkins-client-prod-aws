@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environment/env';
 import { CommonService } from 'src/app/shared/common.service';
@@ -27,7 +27,7 @@ import { Location } from '@angular/common'
       useValue: { displayDefaultIndicatorType: true, showError: true, },
     },
   ],
-
+ 
 })
 export class ClientFormComponent implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;

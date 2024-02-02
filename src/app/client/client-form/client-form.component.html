@@ -40,9 +40,7 @@
                     <ul>
                         <li><span style="font-style: bold;">Property name:- {{propertyName}}</span> </li>
 
-                        <li><span style="font-style: bold;">Total investment:- <input [readonly]="canEdit" [value]="propertyAmount | currency : 'USD'" matInput
-                                    placeholder="Enter First name ex.Brown" formControlName="surname" required
-                                    >{{propertyAmount | currency : 'USD' }}</span> </li>
+                        <li><span style="font-style: bold;">Total investment:- {{propertyAmount | currency : 'USD' }}</span> </li>
                     </ul>
                 </div>
                 <!--                
@@ -594,7 +592,7 @@
                                                     <div [formGroupName]="i" style="margin-bottom: 10px;">
 
                                                         <div class="example-wrapper mb-3">
-                                                            <h6 class="mb-0" for="name" style="color: #fff;">
+                                                            <h6 class="mb-0" for="name" style="color:black;">
                                                                 <strong> Joint Holder: {{i + 1}}</strong>
                                                             </h6>
                                                             <div class="">

@@ -467,7 +467,7 @@ my-app>.k-icon.k-i-loading {
   color: red;
 }
 .main-heading {
-  background: #21b3f4;
+  background: #1b4a9b;
   padding: 10px 15px;
   color: #fff;
 }
@@ -478,7 +478,7 @@ my-app>.k-icon.k-i-loading {
   text-align: center;
 }
 .main-heading-bg {
-  background: #21b3f4;
+  background: #1b4a9b;
   color: #fff;
   padding: 7px 15px;
 }
@@ -1237,7 +1237,7 @@ text {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #00ffb4;
+  color:black !important;
 }
 .btn-style-target {
   background: #039e8e!important;
