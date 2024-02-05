@@ -16,7 +16,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation, MatStepperModule } from '@angular/material/stepper';
 import { Observable, map } from 'rxjs';
-import { Location } from '@angular/common'
+import { CurrencyPipe, Location } from '@angular/common'
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
@@ -119,7 +119,7 @@ public formTitle : string
   constructor(private _fb: FormBuilder, public _commonService: CommonService, private router: ActivatedRoute,
     public spinner: NgxSpinnerService, public route: Router, breakpointObserver: BreakpointObserver,
     private location:Location) {
-
+      
     this.clientId = sessionStorage.getItem('id')
     this.clientNumber = sessionStorage.getItem('client_id')
     this.maxDate = new Date();
@@ -133,10 +133,12 @@ public formTitle : string
      
   }
   async ngOnInit() {
-
+    
     this.clientIdForm = this._fb.group({
 
-      client_type: [{ disabled: true }]
+      client_type: [{ disabled: true }],
+      share:[this._commonService.propertyData[0]?.share,Validators.required],
+      InvestmentAmount: [null],
     });
 
     this.clientFormA = this._fb.group({
@@ -934,14 +936,14 @@ public formTitle : string
           })
         }
       }
-
+      const newStr = Number(this.clientIdForm.get('InvestmentAmount').value.replace(/[^0-9.-]+/g,""));
       const body = {
         "enq_form": {
           "client_id": this.clientId,
           "primary_index": this.primaryIndex != undefined ? this.primaryIndex : undefined,
           "prop_id": this._commonService.propertyData[1].id,
-          "investing_amount": this._commonService.propertyData[0].InvestmentAmount,
-          "investment_unit": this._commonService.propertyData[0].share,
+          "investing_amount":newStr,
+          "investment_unit":  this.clientIdForm.get('share').value,
           "paidStatus": false,
          // id: this.formValue != undefined ? this.formValue.id : null,
           "isDraft": false,
