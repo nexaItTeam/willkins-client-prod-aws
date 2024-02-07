@@ -61,7 +61,7 @@
                                 </label>
                                 <mat-form-field appearance="outline">
                                     <input style="color:black" matInput formControlName="InvestmentAmount" readonly
-                                        [ngModel]="this.clientIdForm.get('share')!.value * _commonService.propertyData[1].price_per_share | currency : 'USD' ">
+                                        [ngModel]="this.clientIdForm?.get('share')!?.value * _commonService?.propertyData[1]?.price_per_share | currency : 'USD' ">
 
 
                                 </mat-form-field>

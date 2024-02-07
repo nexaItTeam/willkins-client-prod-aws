@@ -1432,7 +1432,7 @@ public formTitle : string
     if (!event.files[0].validationErrors) {
       let individualAttachment = []
       individualAttachment = [...individualAttachment, ...event.files]
-      this.atttachments = []
+     // this.atttachments = []
       this.atttachments = [...this.atttachments, ...event.files]
       this.f2?.individualAttachments['controls'][i].controls.individualoption1_files.setValue(individualAttachment[0].name)
       this.f2?.individualAttachments['controls'][i].controls.individualoption1_files.setErrors(null)
@@ -1455,7 +1455,7 @@ public formTitle : string
         if (type == "Individual_2_1" && !event.files[0].validationErrors) {
           let individualAttachment = []
           individualAttachment = [...individualAttachment, ...event.files]
-          this.individualattachments1 = []
+        //  this.individualattachments1 = []
           this.individualattachments1 = [...this.individualattachments1, ...event.files]
           this.f2?.individualAttachments['controls'][i].controls.individualoption2_files.setValue(individualAttachment[0].name)
           this.f2?.individualAttachments['controls'][i].controls.individualoption2_files.setErrors(null)
@@ -1466,7 +1466,7 @@ public formTitle : string
         break;
       case 'Individual_2_2':
         if (type == "Individual_2_2" && !event.files[0].validationErrors) {
-          this.individualatttachments2 = []
+         // this.individualatttachments2 = []
           var individualAttachment = []
           individualAttachment = [...individualAttachment, ...event.files]
           this.individualatttachments2 = [...this.individualatttachments2, ...event.files]
@@ -1600,7 +1600,7 @@ public formTitle : string
 
   }
   onFileSelect(event: any, type: any) {
-    this.atttachments = []
+   // this.atttachments = []
     this.atttachments = [...this.atttachments, ...event.files]
 
   }
@@ -1885,7 +1885,7 @@ public formTitle : string
   }
   //will upload individual 2 category images
   uploadindividualoption_2_1() {
-    for (let i = 0; i < this.individualattachments1.length; i++) {
+    for (let i = 0; i < this.individualatttachments2.length; i++) {
       const atttachments = this.individualatttachments2[i]
       const uploadItems: any = new FormData();
       uploadItems.append('id',4356);

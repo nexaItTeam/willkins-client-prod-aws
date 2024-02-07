@@ -82,7 +82,7 @@ if(event.target.files[0].type == 'image/png' || event.target.files[0].type == 'i
     }
   }
   async onFormSubmit() {
-    debugger
+    
     this.spinner.show()
     
     if (this.clientimageData) {
