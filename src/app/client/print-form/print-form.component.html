@@ -11,7 +11,7 @@
             Save As PDF...
         </button>
     </div>
-    <kendo-pdf-export #pdf margin="2cm">
+    <kendo-pdf-export #pdf paperSize="A3" forcePageBreak=".page-break" >
         <div class="content-wrapper">
             <div class="form-section">
 
@@ -1132,7 +1132,9 @@
                             </form>
                         </div>
                     </div>
+                  
                     <div *ngIf="showCompany">
+                        <h3 *ngIf="showFormA "class="page-break"></h3>
                         <div class="label main-title">
                             Company
                         </div>
@@ -1501,7 +1503,9 @@
                             </div>
                         </div>
                     </div>
+                   
                     <div *ngIf="showFormC">
+                        <h3 *ngIf="showFormA || showCompany "class="page-break"></h3>
                         <div class="label main-title">
                             Trust
                         </div>
@@ -2289,8 +2293,9 @@
                             </form>
                         </div>
                     </div>
-
+                   
                     <div *ngIf="showFormD">
+                        <h3 class="page-break"></h3>
                         <div  class="label main-title" >
                                 Beneficial Ownership
                             </div>
@@ -2967,8 +2972,9 @@
                             </div>
                         </div>
                     </div>
-
+                 
                     <div id="BankData">
+                        <h3 class="page-break"></h3>
                         <div  class="label main-title"><span>
                                 Bank Detail
                             </span>
@@ -3092,7 +3098,7 @@
                         </div>
                     </div>
                 </div>
-
+                <h3 class="page-break"></h3>
                 <div id="identificationData">
                     <div  class="label main-title" >
                             Identification Requirements
@@ -3608,7 +3614,7 @@
                     </form>
                 </div>
 
-
+                <h3 class="page-break"></h3>
                 <div  class="label main-title" >
                     Declaration
                </div>
