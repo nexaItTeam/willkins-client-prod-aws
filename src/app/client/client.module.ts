@@ -40,6 +40,7 @@ import { ClientTransactionComponent } from './client-transaction/client-transact
 import { ViewPropInvestmentComponent } from './view-prop-investment/view-prop-investment.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { PrintFormComponent } from './print-form/print-form.component';
+import { BarcodesModule } from '@progress/kendo-angular-barcodes';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { PrintFormComponent } from './print-form/print-form.component';
     GridModule,
     PDFModule,
     ExcelModule,
+    BarcodesModule,
   ],
   providers: [
     { provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: { clickAction: 'check' } as MatCheckboxDefaultOptions },

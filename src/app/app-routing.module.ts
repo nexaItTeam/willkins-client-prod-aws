@@ -34,6 +34,7 @@ import { ClientTransactionComponent } from './client/client-transaction/client-t
 import { ViewPropInvestmentComponent } from './client/view-prop-investment/view-prop-investment.component';
 import { ClientDetailComponent } from './client/client-detail/client-detail.component';
 import { PrintFormComponent } from './client/print-form/print-form.component';
+import { AppSignatureComponent } from './app-signature/app-signature.component';
 
 
 
@@ -54,6 +55,11 @@ const routes: Routes = [
   path: 'forgot',
   component: ForgotPasswordComponent,
   children: []
+},
+{
+  path: 'app-identification',
+  component: AppSignatureComponent,
+  
 },
 {
   path: 'terms',

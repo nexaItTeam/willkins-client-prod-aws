@@ -16,12 +16,15 @@ import { NgxOtpInputModule } from "ngx-otp-input";
 import { BrokerModule } from './broker/broker.module';
 import { BnNgIdleService } from 'bn-ng-idle';
 import {ConfirmationDialogComponent} from 'src/app/confirmation-dialog/confirmation-dialog.component'
+import { AppSignatureComponent } from './app-signature/app-signature.component';
+import { InputsModule } from "@progress/kendo-angular-inputs";
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    AppSignatureComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import {ConfirmationDialogComponent} from 'src/app/confirmation-dialog/confirmat
     HttpClientModule,
     NgxSpinnerModule,
     NgxOtpInputModule,
-    BrokerModule
+    BrokerModule,
+    InputsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

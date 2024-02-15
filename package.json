@@ -22,6 +22,7 @@
     "@angular/router": "^16.1.0",
     "@ng-bootstrap/ng-bootstrap": "^15.1.1",
     "@popperjs/core": "^2.11.6",
+    "@progress/kendo-angular-barcodes": "^13.3.0",
     "@progress/kendo-angular-charts": "^7.3.2",
     "@progress/kendo-angular-gauges": "^5.0.1",
     "@progress/kendo-angular-grid": "^13.3.0",
@@ -41,6 +42,7 @@
     "moment": "^2.29.4",
     "ngx-otp-input": "^0.11.4",
     "ngx-spinner": "^16.0.2",
+    "ngx-websocket": "^0.4.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

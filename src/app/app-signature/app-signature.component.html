@@ -1,0 +1,20 @@
+<div style="height:100px"></div>
+
+<div class="box-area">
+    <div class="row justify-content-center align-content-center">
+        <div class="col-md-6">
+            <div class="inner-area-box">
+                <form [formGroup]="signedform" >
+                <kendo-signature #signature
+                formControlName="sid"
+                required></kendo-signature>
+            </form>
+            </div>
+            <div><button (click)="onupload()">
+                upload
+            </button></div>
+        </div>
+       
+    </div>
+</div>
+

@@ -17,6 +17,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation, MatStepperModule } from '@angular/material/stepper';
 import { Observable, map } from 'rxjs';
 import { CurrencyPipe, Location } from '@angular/common'
+import { QRCodeOverlay } from '@progress/kendo-angular-barcodes';
+import { NgxWebsocketService    } from 'ngx-websocket';
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
@@ -30,6 +32,7 @@ import { CurrencyPipe, Location } from '@angular/common'
  
 })
 export class ClientFormComponent implements OnInit {
+  socket: WebSocket;
   @ViewChild('stepper') stepper: MatStepper;
   @ViewChild('cdkStepper') cdkStepper: MatStepper | undefined;
   public designation = designationList
@@ -115,11 +118,22 @@ public formTitle : string
   @ViewChild('identificationData') identificationData!: ElementRef;
   @ViewChild('declarationData') declarationData!: ElementRef;
   stepperOrientation: Observable<StepperOrientation>;
+  public overlay: QRCodeOverlay = {
+    type: 'image',
+    imageUrl: 'https://demos.telerik.com/kendo-ui/content/shared/images/site/kendoka-cta.svg',
+    width: 60,
+    height: 60
+};
 
   constructor(private _fb: FormBuilder, public _commonService: CommonService, private router: ActivatedRoute,
     public spinner: NgxSpinnerService, public route: Router, breakpointObserver: BreakpointObserver,
-    private location:Location) {
-      
+    private location:Location,private ngxWebsocketService: NgxWebsocketService ) {
+     
+      this.socket = new WebSocket('ws://localhost:4200/app-identification');
+      this.socket.addEventListener('message', (event) => {
+       console.log(event) // Adjust this according to your message structure
+      });
+
     this.clientId = sessionStorage.getItem('id')
     this.clientNumber = sessionStorage.getItem('client_id')
     this.maxDate = new Date();
@@ -2728,6 +2742,33 @@ public formTitle : string
         this.f1?.jointInvestor['controls'][i ].controls.foreigntaxfieldY.setErrors(null)
         this.f1?.jointInvestor['controls'][i ].controls.foreigntaxfieldYTIN.setErrors(null)
        }
+  }
+  generateqrvalue(i){
+    const url = 'https://client.wellkins.com.au/app-identification?uid=' +  this.clientNumber + '&name='
+    return  url + this.f3?.clientDeclarationAttachments['controls'][i]?.controls?.signature_1_name?.value
+  }
+
+  getuploadedsignature(i:number){
+    this.spinner.show()
+    var body ={
+      "signiture": {
+          "signiture": this.clientNumber + this.f3?.clientDeclarationAttachments['controls'][i]?.controls?.signature_1_name?.value
+      }
+    
+  }
+    this._commonService.getdigitalsignature(body).subscribe((res:any)=>{
+      if(res){
+        this.spinner.hide()
+        
+        this.f3?.clientDeclarationAttachments['controls'][i]?.controls?.signaturefilename?.patchValue(res.get_Sign.digital_sign.buffer.sid)
+        alert("Sucess");
+        
+       
+      }
+    },(error: any) => {
+      this.spinner.hide()
+      alert("Something went wrong")
+    })
   }
 }
 

@@ -144,5 +144,10 @@ export class CommonService {
     const headers = this.getRequestHeaders(true);
     return this._http.post(environment.CLIENT_LOGIN + 'get', body, headers);
   }
- 
+ senddigitalsignature(body:any){
+  return this._http.post(environment.CLIENT_LOGIN + 'create-sign', body);
+ }
+ getdigitalsignature(body:any){
+  return this._http.post(environment.CLIENT_LOGIN + 'get-sign', body);
+ }
 }
