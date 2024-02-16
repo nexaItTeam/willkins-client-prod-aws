@@ -2747,17 +2747,18 @@ public formTitle : string
 
   generateqrvalue(i){
  
-  
+  const name  = this.f3?.clientDeclarationAttachments['controls'][i]?.controls?.signature_1_name?.value.split(" ")
     const url = 'https://client.wellkins.com.au/app-identification?uid=' +  this.clientNumber + '&name='
     
-    return  url + this.f3?.clientDeclarationAttachments['controls'][i]?.controls?.signature_1_name?.value
+    return  url + name[0]
   }
 
   getuploadedsignature(i:number){
     this.spinner.show()
+    const name  = this.f3?.clientDeclarationAttachments['controls'][i]?.controls?.signature_1_name?.value.split(" ")
     var body ={
       "signiture": {
-          "signiture": this.clientNumber + this.f3?.clientDeclarationAttachments['controls'][i]?.controls?.signature_1_name?.value
+          "signiture": this.clientNumber + name[0]
       }
     
   }
