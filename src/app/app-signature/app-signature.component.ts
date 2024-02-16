@@ -47,8 +47,9 @@ ngOnInit(): void {
 }
 
 onupload(){
+  debugger
   this.spinner.show()
- 
+ if(this.name !=undefined){
   var body={
     "signiture": {
         "signiture":this.id+this.name,
@@ -71,5 +72,9 @@ this._commonService.senddigitalsignature(body).subscribe((res:any)=>{
   this.spinner.hide()
   alert("Something went wrong")
 })
+ }else{
+  alert('please scan again , unauthorized user.')
+  this.spinner.hide()
+ }
 }
 }

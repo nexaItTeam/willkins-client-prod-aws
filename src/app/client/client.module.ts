@@ -41,6 +41,7 @@ import { ViewPropInvestmentComponent } from './view-prop-investment/view-prop-in
 import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { PrintFormComponent } from './print-form/print-form.component';
 import { BarcodesModule } from '@progress/kendo-angular-barcodes';
+import { WebsocketServiceService } from '../shared/websocket-service.service';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { BarcodesModule } from '@progress/kendo-angular-barcodes';
   ],
   providers: [
     { provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: { clickAction: 'check' } as MatCheckboxDefaultOptions },
-    CurrencyPipe 
+    CurrencyPipe ,
+    WebsocketServiceService
   ]
 })
 export class ClientModule { }

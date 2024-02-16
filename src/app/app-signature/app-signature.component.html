@@ -1,20 +1,32 @@
 <div style="height:100px"></div>
 
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+        <p style="color: white">Please Wait. </p>
+    </div>
+
+</ngx-spinner>
 <div class="box-area">
     <div class="row justify-content-center align-content-center">
         <div class="col-md-6">
-            <div class="inner-area-box">
-                <form [formGroup]="signedform" >
-                <kendo-signature #signature
-                formControlName="sid"
-                required></kendo-signature>
-            </form>
+            <div class="message">
+                <p style="color:white">Hi {{name}} , please Sign below and upload your signature. once finished  click on Done button on your destop to retreive signature.</p>
+                <!-- You can place your logo image here -->
+                
             </div>
-            <div><button (click)="onupload()">
-                upload
-            </button></div>
+            <div class="inner-area-box">
+                <form [formGroup]="signedform">
+                    <kendo-signature #signature formControlName="sid" required></kendo-signature>
+                </form>
+            </div>
+            <div class="button-area">
+                <button class="upload-button" (click)="onupload()">
+                    upload
+                </button>
+            </div>
         </div>
-       
     </div>
 </div>
-

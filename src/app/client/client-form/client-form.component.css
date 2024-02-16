@@ -24,3 +24,9 @@
 .example-radio-button {
   margin: 5px;
 }
+
+.custom-message {
+  margin-top: 10px; /* Add margin to separate the custom message from the "OR" heading */
+  font-style: italic; /* Make the text italic */
+  color: #888; /* Set a custom color for the message */
+}

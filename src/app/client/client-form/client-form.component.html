@@ -4055,7 +4055,7 @@
                                                     </label>
                                                     <div>
                                                         <div class="row gx-1 align-content-center mb-2">
-                                                            <div class="col-lg-4 col-md-6 mb-3">
+                                                            <div class="col-lg-3 col-md-6 mb-3">
                                                                 <kendo-signature #signature
                                                                     formControlName="signaturefilename" [popupScale]="2"
                                                                     required></kendo-signature>
@@ -4065,19 +4065,25 @@
                                                                 </mat-error>
                                                                
                                                             </div>
-                                                             <div *ngIf="clientNumber == '118540' || clientNumber == '458879'"class="col-lg-1  ">
+                                                             <div *ngIf="clientNumber == '118540' || clientNumber == '458879'"class="col-lg-2  ">
                                                                
-                                                                <h6>OR:</h6>
-
+                                                                <h6>OR</h6>
+                                                                <div class="custom-message">
+                                                                    <!-- Your custom message goes here -->
+                                                                    <p>sign your application on your personal device by scanning qr.</p>
+                                                                </div>
                                                             </div>
                                                             <div *ngIf="clientNumber == '118540' || clientNumber == '458879'" class="col-lg-4 col-md-6 mb-3">
-                                                                <kendo-qrcode 
+                                                                <kendo-qrcode [overlay]="overlay"
+                                                                errorCorrection="Q"
                                                                 [value]="generateqrvalue(i)"
+                                                                (scan)="onQRCodeScanned($event, i)"
                                                                  >
                                                             </kendo-qrcode>
-                                                            <button [hidden]="canEdit" class="btn btn-success"
+                                                           
+                                                            <button  class="btn btn-success"
                                                 (click)="getuploadedsignature(i)">Done</button>
-                                                <h6>click on done after scanning & uploading image</h6>
+                                                <p>Click on Done after  QR code  scan & signature upload to retreive your signature </p>
                                                             </div> 
                                                             <h6>Signed, sealed and delivered by:</h6>
                                                             <div class="col-lg-4 col-md-6 mb-2">

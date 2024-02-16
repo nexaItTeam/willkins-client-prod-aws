@@ -120,9 +120,9 @@ public formTitle : string
   stepperOrientation: Observable<StepperOrientation>;
   public overlay: QRCodeOverlay = {
     type: 'image',
-    imageUrl: 'https://demos.telerik.com/kendo-ui/content/shared/images/site/kendoka-cta.svg',
-    width: 60,
-    height: 60
+    imageUrl: 'https://wellkinsstorageprod.blob.core.windows.net/document/wlogo.jpg',
+    width: 20,
+    height: 20
 };
 
   constructor(private _fb: FormBuilder, public _commonService: CommonService, private router: ActivatedRoute,
@@ -2743,8 +2743,13 @@ public formTitle : string
         this.f1?.jointInvestor['controls'][i ].controls.foreigntaxfieldYTIN.setErrors(null)
        }
   }
+  
+
   generateqrvalue(i){
+ 
+  
     const url = 'https://client.wellkins.com.au/app-identification?uid=' +  this.clientNumber + '&name='
+    
     return  url + this.f3?.clientDeclarationAttachments['controls'][i]?.controls?.signature_1_name?.value
   }
 
@@ -2769,6 +2774,13 @@ public formTitle : string
       this.spinner.hide()
       alert("Something went wrong")
     })
+  }
+  qrCodeScanned: boolean[] = [];
+
+  onQRCodeScanned(event: any, index: number) {
+    console.log(index)
+      // Assuming you handle the scanned data here if needed
+      this.qrCodeScanned[index] = true; // Set the corresponding index to true to indicate QR code scanning
   }
 }
 
