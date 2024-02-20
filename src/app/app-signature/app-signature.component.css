@@ -70,6 +70,18 @@
     margin-bottom: 20px; /* Adjust the margin bottom as needed */
 }
 
+
+.k-signature-pad {
+  width: 100%; /* Adjust as needed */
+  height: 300px; /* Adjust as needed */
+}
+
+/* Adjust the styles for the canvas element inside the signature pad */
+.k-signature-pad canvas {
+  width: 100%;
+  height: 100%;
+}
+
 .button-area {
     margin-top: 10px; /* Adjust the margin top to add space between signature and button */
 }

@@ -27,7 +27,7 @@ console.log(this.invoiceInfo)
 this.Date= this.invoiceInfo[0].createdAt
 this.installmentAmount = this.invoiceInfo[0].enq_prop_data?.first_installment_price
 this.index =this.invoiceInfo[0].enq_form_data?.primary_index
-this.prop_type = this.invoiceInfo[0].enq_prop_data.prop_type == 3 ? "Wellkins Mortgage Fund" : "Wellkins Capital Fund"
+this.prop_type = this.invoiceInfo[0].enq_prop_data.prop_type == 3 ? "Wellkins MF" : "Wellkins CF"
 this.ARSN = this.invoiceInfo[0].enq_prop_data.prop_type == 3 ? '673 559 576' : '614 577 276'
 this.Account_number = this.invoiceInfo[0].enq_prop_data.prop_type == 3 ? '900113297' : '899882071'
 this.getUserDetail()
