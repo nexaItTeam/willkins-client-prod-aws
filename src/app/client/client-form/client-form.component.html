@@ -89,7 +89,7 @@
                             <form [formGroup]="clientFormA">
                                 <ng-template matStepLabel><span
                                         [ngStyle]="{'color': clientFormA.valid ? 'green' : 'red'}">
-                                        Personal details
+                                        Personal details2
                                     </span></ng-template>
                                 <div class="my-4">
                                     <div class="section-inner">
@@ -1153,7 +1153,7 @@
                                     </div>
                                     <div class="section-inner">
                                         <div class="row align-items-center k-justify-content-around">
-                                            <div class="col-lg-6 col-md-12">
+                                            <div class="col-lg-6 col-md-12 formaction_btn_list">
                                                 <button [hidden]="canEdit" class="btn w-btn style3 " mat-button
                                                     (click)="clientFormA.reset()">Reset
                                                 </button>
@@ -1161,7 +1161,7 @@
                                                     (click)="onSaveDraft()">Save
                                                     Draft</button>
                                             </div>
-                                            <div class="col-lg-6 col-md-12 text-end">
+                                            <div class="col-lg-6 col-md-12 text-end action_btn_list">
                                                 <button class="btn w-btn btn-style4 me-2" matStepperNext>Next <span
                                                         class="fa-solid fa-arrow-right"></span></button>
                                             </div>
@@ -1778,7 +1778,7 @@
                             </div>
                             <div>
                                 <div class="row align-items-center k-justify-content-around">
-                                    <div class="col-lg-6 col-md-12">
+                                    <div class="col-lg-6 col-md-12 formaction_btn_list">
                                         <button class="btn w-btn style3 me-2" mat-button [hidden]="canEdit"
                                             (click)="clientGeneralDetails.reset()">Reset
                                         </button>
@@ -1786,7 +1786,7 @@
                                             (click)="onSaveDraft()">Save
                                             Draft</button>
                                     </div>
-                                    <div class="col-lg-6 col-md-12 text-end">
+                                    <div class="col-lg-6 col-md-12 text-end action_btn_list">
                                         <button class="btn w-btn btn-style4 me-2" matStepperNext>Next <span
                                                 class="fa-solid fa-arrow-right"></span></button>
                                     </div>
@@ -2578,13 +2578,13 @@
                                     </div>
                                     <div>
                                         <div class="row align-items-center k-justify-content-around">
-                                            <div class="col-lg-6 col-md-12">
+                                            <div class="col-lg-6 col-md-12 formaction_btn_list">
 
                                                 <button class="btn w-btn btn-style1" mat-button [hidden]="canEdit"
                                                     (click)="onSaveDraft()">Save
                                                     Draft</button>
                                             </div>
-                                            <div class="col-lg-6 col-md-12 text-end">
+                                            <div class="col-lg-6 col-md-12 text-end action_btn_list">
                                                 <button class="btn w-btn btn-style4 me-2" matStepperNext>Next <span
                                                         class="fa-solid fa-arrow-right"></span></button>
                                             </div>
@@ -3262,7 +3262,7 @@
                                     </div>
                                 </form>
                                 <div class="row align-items-center k-justify-content-around">
-                                    <div class="col-lg-6 col-md-12">
+                                    <div class="col-lg-6 col-md-12 formaction_btn_list">
                                         <button class="btn w-btn btn-style4 me-2"
                                             style="background-color:aqua !important" matStepperPrevious> <span
                                                 class="fa-solid fa-arrow-left"></span> Back</button>
@@ -3273,7 +3273,7 @@
                                             (click)="onSaveDraft()">Save
                                             Draft</button>
                                     </div>
-                                    <div class="col-lg-6 col-md-12 text-end">
+                                    <div class="col-lg-6 col-md-12 text-end action_btn_list">
                                         <button class="btn w-btn btn-style4 me-2" matStepperNext>Next <span
                                                 class="fa-solid fa-arrow-right"></span></button>
                                     </div>
@@ -3400,7 +3400,7 @@
                         </div>
                         <div class="section-inner">
                             <div class="row align-items-center k-justify-content-around">
-                                <div class="col-lg-6 col-md-12">
+                                <div class="col-lg-6 col-md-12 formaction_btn_list">
                                     <button class="btn w-btn btn-style4 me-2" style="background-color:aqua !important"
                                         matStepperPrevious> <span class="fa-solid fa-arrow-left"></span> Back</button>
                                     <button class="btn w-btn style3 me-2" mat-button [hidden]="canEdit"
@@ -3410,7 +3410,7 @@
                                         (click)="onSaveDraft()">Save
                                         Draft</button>
                                 </div>
-                                <div class="col-lg-6 col-md-12 text-end">
+                                <div class="col-lg-6 col-md-12 text-end action_btn_list">
                                     <button class="btn w-btn btn-style4 me-2" matStepperNext>Next <span
                                             class="fa-solid fa-arrow-right"></span></button>
                                 </div>
@@ -3927,7 +3927,7 @@
 
                                 <div class="section-inner">
                                     <div class="row align-items-center k-justify-content-around">
-                                        <div class="col-lg-6 col-md-12">
+                                        <div class="col-lg-6 col-md-12 formaction_btn_list">
                                             <button class="btn w-btn btn-style4 me-2"
                                                 style="background-color:aqua !important" matStepperPrevious> <span
                                                     class="fa-solid fa-arrow-left"></span> Back</button>
@@ -3935,7 +3935,7 @@
                                                 (click)="onSaveDraft()">Save
                                                 Draft</button>
                                         </div>
-                                        <div class="col-lg-6 col-md-12 text-end">
+                                        <div class="col-lg-6 col-md-12 text-end action_btn_list">
                                             <button class="btn w-btn btn-style4 me-2" matStepperNext>Next <span
                                                     class="fa-solid fa-arrow-right"></span></button>
                                         </div>
@@ -3948,7 +3948,7 @@
                     <mat-step [stepControl]="clientDeclaration" label="Declaration" errorMessage="Form is not Valid.">
                         <div class="list-items mb-5" style="color:black">
 
-                            <ul class="list-menu">
+                            <ul class="list-menu acknowledgmentblock">
                                 <h4>I/We declare and/or acknowledge and agree that:</h4>
                                 <li>I/we have received this Application Form attached to, or accompanied by, the PDS and
                                     SPDS; </li>
@@ -4136,7 +4136,7 @@
                                 </div>
                                 <div class="section-inner">
                                     <div class="row align-items-center k-justify-content-around">
-                                        <div class="col-lg-6 col-md-12">
+                                        <div class="col-lg-6 col-md-12 formaction_btn_list">
 
                                             <button class="btn w-btn btn-style4 me-2"
                                                 style="background-color:aqua !important" matStepperPrevious> <span

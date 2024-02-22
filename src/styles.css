@@ -1307,3 +1307,50 @@ kendo-floatingactionbutton.k-pos-fixed.k-pos-bottom-end {
   background :rgb(107, 188, 242) !important;
   cursor: pointer !important;
 }
+.mat-vertical-content-container
+{
+  margin-left:0px !important;
+}
+.mat-vertical-content
+{
+  padding:0px !important;
+}
+.mat-vertical-stepper-header
+{
+  height:1px !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+.mat-vertical-content .section-inner
+{
+  padding:0 10px !important;
+}
+.mat-vertical-content .formaction_btn_list
+{
+  display:flex;
+  justify-content: space-between;
+}
+.mat-vertical-content .action_btn_list
+{
+  display:flex;
+
+  margin-top: 25px;
+    justify-content: end;
+}
+.mat-vertical-content .btn.style3
+{
+  padding:0px !important;
+}
+.mat-vertical-content .k-form-hint
+{
+  font-size: 14px  !important;
+  font-style: normal  !important;
+}
+
+.mat-vertical-content h4{
+  font-size: calc(1.075rem + .3vw);
+}
+.acknowledgmentblock
+{
+  padding-top:10px;
+}
