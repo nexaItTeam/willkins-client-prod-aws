@@ -736,6 +736,7 @@
                                                                             <div class="col-lg-4 col-md-6 mb-2">
                                                                                 <label
                                                                                     class="label asterix--before">Email</label>
+                                                                                    
                                                                                 <mat-form-field>
                                                                                     <input [readonly]="canEdit" matInput
                                                                                         type="email"
@@ -746,7 +747,7 @@
                                                                                 </mat-form-field>
                                                                                 <mat-error
                                                                                     *ngIf="f1?.jointInvestor['controls'][i].get('email').errors?.required">
-                                                                                    Email field is required</mat-error>
+                                                                                    Email field is required & (Indiviudal applicant , Joint Holder applicant Email ID  must not be same.)</mat-error>
                                                                                 <mat-error
                                                                                     *ngIf="row?.controls?.email?.errors?.email">
                                                                                     Email should be valid email
