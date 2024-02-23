@@ -1354,3 +1354,22 @@ kendo-floatingactionbutton.k-pos-fixed.k-pos-bottom-end {
 {
   padding-top:10px;
 }
+.welcome_client_text p
+{
+  margin-bottom:0px !important;
+}
+@media (max-width:600px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+  .mat-mdc-card-footer {
+    padding-left: 6px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 6px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .buy-en .mat-mdc-text-field-wrapper
+  {
+    width:90%
+  }
+
+}

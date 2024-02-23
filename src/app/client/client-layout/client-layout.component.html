@@ -1,6 +1,6 @@
 <kendo-drawer-container>
     <!--  -->
-    <kendo-drawer class="weureiu" #drawer [items]="items" mode="push" [mini]="true" [expanded]="true"
+    <kendo-drawer class="weureiu" #drawer [items]="items" mode="push" [mini]="true" [expanded]="expanded"
         (select)="onSelect($event)" [autoCollapse]="false" [isItemExpanded]="isItemExpanded">
         <ng-template kendoDrawerHeaderTemplate>
             <div class="mt-4">
@@ -20,7 +20,7 @@
 
     <kendo-drawer-content>
         <div class="custom-toolbar d-flex justify-content-between align-items-center">
-            <div class="logo-area w-50">
+            <div class="logo-area w-20">
                 <button kendoButton [svgIcon]="menuSvg" fillMode="flat" (click)="drawer.toggle()"></button>
 
 
@@ -49,8 +49,8 @@
                     title="Tap to edit profile"
                   ></kendo-avatar>
                     
-                    <div>
-                      <p>&nbsp; Welcome {{client_name}} &nbsp; </p>
+                    <div class="welcome_client_text">
+                      <p>&nbsp; Welcome {{client_name}}  &nbsp; </p>
                     </div>
                     <div *ngIf ="client_type == 2">
                         <kendo-switch [(ngModel)]="checked" (valueChange)="onswitchAccount()" onLabel="client"
