@@ -1358,6 +1358,18 @@ kendo-floatingactionbutton.k-pos-fixed.k-pos-bottom-end {
 {
   margin-bottom:0px !important;
 }
+.mat-custom-title
+{
+  min-height: 50px !important;
+}
+.property-card .mat-mdc-card-content
+{
+  min-height: 111px !important;
+}
+.price_unit_leftblock
+{
+  margin-top:-90px !important;
+}
 @media (max-width:600px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
   .mat-mdc-card-footer {
     padding-left: 6px;
@@ -1370,6 +1382,14 @@ kendo-floatingactionbutton.k-pos-fixed.k-pos-bottom-end {
   .buy-en .mat-mdc-text-field-wrapper
   {
     width:90%
+  }
+  .property-card .mat-mdc-card-content
+  {
+    min-height: 80px !important;
+  }
+  .price_unit_leftblock
+  {
+    margin-top:-20px !important;
   }
 
 }

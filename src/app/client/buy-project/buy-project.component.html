@@ -20,7 +20,7 @@
                     <a class="btn btn-style-target mb-4" (click)="checkPdf('PDS')"
                         href="https://wellkinsstorageprod.blob.core.windows.net/pds/{{propertyData.pds}}"
                         target="_blank">Click Here to View PDS</a>
-                    <a class="btn btn-style-target" (click)="checkPdf('SPDs')"
+                    <a class="btn btn-style-target  mb-4" (click)="checkPdf('SPDs')"
                         href="https://wellkinsstorageprod.blob.core.windows.net/spds/{{propertyData.spds}}"
                         target="_blank">Click Here to View SPDS</a>
                 </div>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-5 px-4">
+        <div class="col-lg-5 px-4 price_unit_leftblock">
             <p style="color: red;">Price per unit Is : {{propertyData.price_per_share | currency :
                 'USD' : 'symbol' : '1.0-0'}}</p>
             <form [formGroup]="buyForm">
