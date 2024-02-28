@@ -2766,7 +2766,7 @@ public formTitle : string
       if(res){
         this.spinner.hide()
         
-        this.f3?.clientDeclarationAttachments['controls'][i]?.controls?.signaturefilename?.patchValue(res.get_Sign.digital_sign.buffer.sid)
+        this.f3?.clientDeclarationAttachments['controls'][i]?.controls?.signaturefilename?.patchValue(res.get_Sign.digital_sign.sid)
         alert("Sucess");
         
        
