@@ -1,22 +1,25 @@
 <app-loader></app-loader>
 
 <div class="add-enquiry">
+    <!-- Property Image Section -->
     <div class="row">
         <div class="col-lg-5 col-md-12">
             <ng-container *ngFor="let object of propertyImage">
-                <ng-template [ngIf]="object.prop_id  == propertyData.id">
-                    <div class=" property-card style3 h_img">
+                <ng-template [ngIf]="object.prop_id == propertyData.id">
+                    <div class="property-card style3 h_img">
                         <img mat-card-image style="height: 300px; width:100%"
                             src='https://wellkinsstorageprod.blob.core.windows.net/{{object.property_img}}' />
                     </div>
                 </ng-template>
             </ng-container>
         </div>
+        <!-- Property Details Section -->
         <div class="col-lg-7 col-md-12">
             <div class="pt-4 px-3">
-                <h5 class="mb-3"  style="color:black">{{propertyData.property_name}}</h5>
+                <h5 class="mb-3" style="color:black">{{propertyData.property_name}}</h5>
                 <p style="color:black">{{propertyData.desc}}</p>
                 <div class="mb-4">
+                    <!-- Buttons to View PDFs -->
                     <a class="btn btn-style-target mb-4" (click)="checkPdf('PDS')"
                         href="https://wellkinsstorageprod.blob.core.windows.net/pds/{{propertyData.pds}}"
                         target="_blank">Click Here to View PDS</a>
@@ -27,72 +30,68 @@
             </div>
         </div>
     </div>
+
+    <!-- Investment Details Section -->
     <div class="row">
         <div class="col-lg-5 px-4 price_unit_leftblock">
+            <!-- Display Price Per Unit -->
             <p style="color: red;font-size: 20px;">Price per unit Is : {{propertyData.price_per_share | currency :
                 'USD' : 'symbol' : '1.0-0'}}</p>
+
+            <!-- Investment Form -->
             <form [formGroup]="buyForm">
                 <div class="buy-en">
+                    <!-- Total amount you want to invest -->
                     <div class="mb-2">
-                        <label style="color:black">Number of units you want to invest ?
-                        </label>
+                        <label style="color:black">Total amount you want to invest?</label>
                         <mat-form-field appearance="outline">
-
-
-                            <input matInput placeholder=" ex. 2 " pattern="^[1-9]\d*$"
-                                formControlName="share">
-                        </mat-form-field>
-                        <mat-error *ngIf="buyForm.get('share')!.hasError('required')"> Please enter
-                            No of shares</mat-error>
-                        <mat-error *ngIf="buyForm.get('share')!.hasError('pattern')">
-                            Leading Zeroes, Decimal & special characters Not Allowed</mat-error>
-                    </div>
-                    <div class="mb-2">
-                        <label style="color:black">Total amount invested
-                        </label>
-                        <mat-form-field appearance="outline">
-                            <input style="color:black" matInput formControlName="InvestmentAmount" readonly
-                                [value]="  this.buyForm.get('share')!.value * propertyData.price_per_share | currency : 'USD' ">
-
+                            <input style="color:black" matInput formControlName="InvestmentAmount"  (keyup)="formatInput($event)" >
 
                         </mat-form-field>
+                        <mat-error *ngIf="buyForm.get('InvestmentAmount')!.hasError('required')"> Please enter Amount</mat-error>
+                        
                     </div>
-
-
-
+                    
+                    <!-- Number of units you want to invest -->
+                    <div class="mb-2">
+                        <label style="color:black">Number of units </label>
+                        <mat-form-field appearance="outline">
+                            <input type ="number" matInput placeholder=" ex. 2 " formControlName="share" readonly>
+                        </mat-form-field>
+                    </div>
                 </div>
             </form>
-
         </div>
 
+        <!-- PDF and Consent Section -->
         <div class="col-lg-7 px-4">
-
+            <!-- List of PDFs -->
             <div class="list-items mb-5">
                 <ul class="list-menu">
                     <li style="color:black">Click here to view and <a (click)="checkPdf('FSG')"
-                            href="https://wellkinsstorageprod.blob.core.windows.net/fsg/{{propertyData.fsg}}"
-                            target="_blank"> download the FSG</a> </li>
-                    <li style="color:black">Click here to view and <a (click)="checkPdf('TDM')"
-                            href="https://wellkinsstorageprod.blob.core.windows.net/tdm/{{propertyData.tdm}}"
-                            target="_blank">download the TDM</a> </li>
-                    <li *ngIf="propertyData.prop_type !=3"style="color:black" > Click here to view and <a (click)="checkPdf('Brochure')"
-                            href="https://wellkinsstorageprod.blob.core.windows.net/brochure/{{propertyData.brocher}}"
-                            target="_blank">download the Fund brochure</a> </li>
+                        href="https://wellkinsstorageprod.blob.core.windows.net/fsg/{{propertyData.fsg}}"
+                        target="_blank"> download the FSG</a> </li>
+                <li style="color:black">Click here to view and <a (click)="checkPdf('TDM')"
+                        href="https://wellkinsstorageprod.blob.core.windows.net/tdm/{{propertyData.tdm}}"
+                        target="_blank">download the TDM</a> </li>
+                <li *ngIf="propertyData.prop_type !=3"style="color:black" > Click here to view and <a (click)="checkPdf('Brochure')"
+                        href="https://wellkinsstorageprod.blob.core.windows.net/brochure/{{propertyData.brocher}}"
+                        target="_blank">download the Fund brochure</a> </li>
 
                 </ul>
             </div>
 
+            <!-- Consent Checkbox -->
             <div class="cstm-checkbox pb-3">
                 <form [formGroup]="buyForm">
-                    <mat-checkbox  style="color:black" formControlName="consent" required>
-                       <p style="color:black"> I confirm my intention to invest in the Fund and I confirm that I have viewed and downloaded
-                        the PDS, SPDS, TMD and FSG before investing in the Fund.</p>
+                    <mat-checkbox style="color:black" formControlName="consent" required>
+                        <p style="color:black"> I confirm my intention to invest in the Fund and I confirm that I have viewed and downloaded the PDS, SPDS, TMD and FSG before investing in the Fund.</p>
                     </mat-checkbox>
-                    <mat-error *ngIf="buyForm.get('consent')!.hasError('required')">Required
-                    </mat-error>
+                    <mat-error *ngIf="buyForm.get('consent')!.hasError('required')">Required</mat-error>
                 </form>
-
             </div>
+
+            <!-- Next / Express Your Interest Button -->
             <div *ngIf="propertyData.status == 'Trending' && userType != 'broker'" class="text-center">
                 <button class="btn btn-success w-100" [disabled]="!buyForm.valid"
                     (click)="gotoForm(buyForm.value)">Next</button>
@@ -105,8 +104,8 @@
                 <button *ngIf="userType == 'broker'" class="btn btn-success w-100"
                     (click)="onsendEmailClick()">Send Email</button>
             </div>
-
         </div>
     </div>
 </div>
+
 <div style="height: 50px;"></div>
