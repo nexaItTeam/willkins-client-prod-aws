@@ -29,7 +29,7 @@
     </div>
     <div class="row">
         <div class="col-lg-5 px-4 price_unit_leftblock">
-            <p style="color: red;">Price per unit Is : {{propertyData.price_per_share | currency :
+            <p style="color: red;font-size: 20px;">Price per unit Is : {{propertyData.price_per_share | currency :
                 'USD' : 'symbol' : '1.0-0'}}</p>
             <form [formGroup]="buyForm">
                 <div class="buy-en">
@@ -95,7 +95,7 @@
             </div>
             <div *ngIf="propertyData.status == 'Trending' && userType != 'broker'" class="text-center">
                 <button class="btn btn-success w-100" [disabled]="!buyForm.valid"
-                    (click)="gotoForm(buyForm.value)">Submit</button>
+                    (click)="gotoForm(buyForm.value)">Next</button>
             </div>
             <div *ngIf="propertyData.status != 'Trending'  && userType != 'broker'" class="text-center">
                 <button style="color:black;background-color: green;" [disabled]="!buyForm.valid"
